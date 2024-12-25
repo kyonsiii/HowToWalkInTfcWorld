@@ -1,0 +1,44 @@
+.article{
+    background-color: aliceblue;
+    width: 780px;
+}
+
+ul{
+    margin-top: 0;
+}
+
+ul span{
+    background-color: transparent;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+li{
+    font-weight: 700;
+}
+
+ul.weak li{
+    font-weight: 500;
+}
+
+ul ul{
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+}
+
+ul info{
+    background-color: transparent;
+    font-size: 0.9em;
+    font-weight: 500;
+    display: block;
+}
+
+ul.number li{
+    list-style-type:decimal;
+}
+
+uwavy{
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-style: wavy;
+}
