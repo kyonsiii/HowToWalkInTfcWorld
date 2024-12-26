@@ -3,6 +3,23 @@
     width: 780px;
 }
 
+.sub_article{
+    background-color: lightcyan;
+    width: 780px;
+}
+
+
+table{
+    border-collapse: collapse;
+    margin: 5px;
+    margin-left: 0;
+}
+
+table td, table th{
+    border: 1px solid black;   
+    border-spacing: 0;
+}
+
 ul{
     margin-top: 0;
 }
@@ -41,4 +58,21 @@ uwavy{
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-decoration-style: wavy;
+}
+
+unchecked{
+    border: 2px solid red;
+    background-color: lightyellow;
+    display: block;
+    width: fit-content;
+}
+comment{
+    font-size: 0.6em;
+    color: darkslategray;
+    display: block;
+
+}
+ultitle{
+    font-weight: 700;
+    display: block;
 }
