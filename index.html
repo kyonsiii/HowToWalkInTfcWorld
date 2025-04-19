@@ -3,29 +3,589 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>How To Walk In TFC World - Japanese</title>
+        
         <link href="style.css" rel="stylesheet" type="text/css">
+        <script src="js/main.js"></script>
+        <script src="js/ore_finder.js"></script>
+        <script src="js/ore_table.js"></script>
+        <script src="js/plant_table.js"></script>
+        <title>How To Walk In TFC World - Japanese</title>
     </head>
 
     <body>
         <h1>むちゃくちゃ基礎</h1>
         <div class="article" id="size_weight">
-            <h2>大きさ[Size]と重さ[Weight]の概要</h2>       
+            <h2>大きさ[Size]と重さ[Weight]の概要</h2>
             TFCの世界ではアイテムに大きさと重さが設定されている。
+            <table>
+                <thead>
+                    <tr>
+                        <th>サイズ(Size)</th>
+                        <th>収納できる容器</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Tiny</td>
+                        <td>◎ 何にでも入る</td>
+                    </tr>
+                    <tr>
+                        <td>Very Small</td>
+                        <td>◎ 何にでも入る</td>
+                    </tr>
+                    <tr>
+                        <td>Small</td>
+                        <td>
+                            ○ 小さい壺<br>
+                            ○ 大きい壺<br>
+                            ○ チェスト<br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Normal</td>
+                        <td>
+                            × 小さい壺<br>
+                            ○ 大きい壺<br>
+                            ○ チェスト<br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Large</td>
+                        <td>
+                            × 小さい壺<br>
+                            × 大きい壺<br>
+                            ○ チェスト<br>
+                            壺焼き時、4つ地面に配置可
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Very Large</td>
+                        <td>
+                            × 小さい壺<br>
+                            × 大きい壺<br>
+                            × チェスト<br>
+                            壺焼き時、1つ地面に配置可
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Huge</td>
+                        <td>
+                            容器には入れられない。<br>
+                            インベントリに存在すると過積載状態(overburdening)になる。<br>
+                            (空腹状態になりやすくなる)。
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>重さ(Weight)</th>
+                        <th>スタック数</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Very Light</td>
+                        <td>64</td>
+                    </tr>
+
+                    <tr>
+                        <td>Light</td>
+                        <td>32</td>
+                    </tr>
+
+                    <tr>
+                        <td>Medium</td>
+                        <td>16</td>
+                    </tr>
+
+                    <tr>
+                        <td>Heavy</td>
+                        <td>4</td>
+                    </tr>
+
+                    <tr>
+                        <td>Very Heavy</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            金床(Anvil)、密封した樽(Sealed Barrel)、中身の入っているるつぼ(Crucible)を持つと過積載状態(overburdening)になる。<br>
+            HugeかつVery Heavyのアイテムを2つ以上持つと動きが極端に遅くなる。<br>
+            馬にも過積載状態はあるので注意。
         </div>
-        
-        <div class="article" id="pot">
-            <h2>鍋[Pot]の概要と必要素材</h2>       
+
+
+
+        <div class="article" id="vessel">
+            <h2>小さい壺[Small Vessel]の概要と必要素材</h2>
+            サイズSmall以下のアイテムを16個4スタックしまえる。<br>
+            アイテムをカーソルで持った状態で壺アイコンの上で右クリックするとしまえる！！
+            逆に取り出すこともできる。
+
+            大きい壺[Large Vessel]
+            蓋をした状態にするとVery Heavyになるので複数持ち運ぶことはできない。
+        </div>
+
+        <div class="article" id="geology">
+            <h2>地質・地層[geology]</h2>
+            地質には大きく分けて4種類存在し、それぞれ含む鉱物が異なる。
+            <table>
+                <thead>
+                    <tr>
+                        <th>地質カテゴリー</th>
+                        <th>地質名</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>堆積岩層[Sedimentary]</td>
+                        <td>Shale, Claystone, Limestone, Conglomerate, Dolomite, Chert, Chalk</td>
+                    </tr>
+                    <tr>
+                        <td>変成岩層[Metamoriphic]</td>
+                        <td>Quartzite, Slate, Phyllite, Schist, Gneiss, Marble</td>
+                    </tr>
+                    <tr>
+                        <td>火山岩[Igneous Extrusive]</td>
+                        <td>Rhyolite, Basalt, Andesite, Dacite</td>
+                    </tr>
+                    <tr>
+                        <td>深成岩[Igneous Intrusive]</td>
+                        <td>Granite, Diorite, Gabbro</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="article" id="underneath">
+            <h2>下層[Underneath]の概要</h2>
+            特定の地層の下層には特定の地層がある。
+            <table>
+                <thead>
+                    <tr>
+                        <th>カテゴリー</th>
+                        <th>火山岩[Igneous Extrusive]</th>
+                        <th>深成岩[Igneous Intrusive]</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>珪長質岩[Felsic]</td>
+                        <td>Rhyolite</td>
+                        <td>Granite</td>
+                    </tr>
+
+                    <tr>
+                        <td>中間質岩[Intermediate]</td>
+                        <td>Andesite, Dacite</td>
+                        <td>Diorite</td>
+                    </tr>
+                    <tr>
+                        <td>苦鉄質岩(Mafic)</td>
+                        <td>Basalt</td>
+                        <td>Gabbro</td>
+                    </tr>
+                </tbody>
+            </table>
+            海底は火山岩。
+            地表は基本的に堆積岩[Sedimentary]か火山岩[Igneous Extrusive]のどちらかが存在している。
+            地中には変成岩・深成岩が存在する。
+            山岳地帯では変成岩や深成岩が露出していることもある。そこではその地域で見られない堆積岩や変成岩が見つけられることもある？
+            <comment>
+                Uplift rocks can be found above other continental sedimentary or higher-grade metamorphic rocks.
+            </comment>
+            <table>
+                <thead>
+                    <tr>
+                        <th>上部</th>
+                        <th>下部(変成岩など)</th>
+                    </tr>
+                </thead>
+
+                <tdbody>
+                    <tr>
+                        <td>Shale</td>
+                        <td>Slate</td>
+                    </tr>
+                    <tr>
+                        <td>Claystone</td>
+                        <td>Slate</td>
+                    </tr>
+                    <tr>
+                        <td>Conglomerate</td>
+                        <td>Slate</td>
+                    </tr>
+                    <tr>
+                        <td>Limestone</td>
+                        <td>Marble</td>
+                    </tr>
+                    <tr>
+                        <td>Dolomite</td>
+                        <td>Marble</td>
+                    </tr>
+                    <tr>
+                        <td>Chalk</td>
+                        <td>Marble</td>
+                    </tr>
+                    <tr>
+                        <td>Quartzite</td>
+                        <td>Chert</td>
+                    </tr>
+                    <tr>
+                        <td>Phyllite</td>
+                        <td>Slate</td>
+                    </tr>
+                    <tr>
+                        <td>Schist</td>
+                        <td>Phylliteか深成岩[Igneous Intrusive]<td>
+                    </tr>
+                    <tr>
+                        <td>Gneiss</td>
+                        <td>Phylliteか深成岩[Igneous Intrusive]</td>
+                    </tr>
+                </tdbody>
+            </table>
+        </div>
+
+        <div class="article" id="stone_anvil_flux">
+            <h2>石の金床[Stone Anvil]と溶剤[Flux]</h2>
+            銅のツールを作るには銅の金床が必要だが、銅の金床には銅のダブルインゴットが必要。<br>
+            銅のダブルインゴットはTier0以上の金床(石の金床)が必要。
+            <table>
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>備考</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    <tr>
+                        <td>石の金床[Stone Anvil]</td>
+                        <td>Tier0。銅インゴットの溶接にのみ使用する。Igneous ExtrusiveかIgneous Intrusive。Granite, Diorite, Gabbro, Rhyolite, Basalt, Andesite, Dacite </td>
+                    </tr>
+               
+                    <tr>
+                        <td>溶剤[Flux]</td>
+                        <td>Limestone, Dolomite, Chalkをハンマーで砕いて作成。ホウ砂[Borax]を石臼で挽くか, 甲羅[Scute], 二枚貝[Clam], カタツムリ[Mollusk]、ザリガニ[Shellfish]でも作れる。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="article" id="ore_mineral">
+            <h2>鉱石・鉱物[Ores and Minerals]</h2>
+            <table class="item_cat_etc">
+                <thead>
+                    <tr>
+                        <th>鉱石・鉱物名</th>
+                        <th>種類</th>
+                        <th>見つかる地層</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+ 
+
+                    <tr>
+                        <td>カオリン石[Kaolinite]</td>
+                        <td>Kaolinite</td>
+                        <td> </td>
+                    </tr>
+
+                    <tr>
+                        <td>黒鉛[Graphite]</td>
+                        <td>Graphite</td>
+                        <td> </td>
+                    </tr>
+
+                    <tr>
+                        <td>自然銅[Native Copper]</td>
+                        <td>Copper</td>
+                        <td>Y40以上の火山岩地層[Igneous Extrusive]、川で沈殿物[Deposits]が見つかることもある。</td>
+                    </tr>
+
+                    <tr>
+                        <td>孔雀石[Malachite]</td>
+                        <td>Copper</td>
+                        <td>主にMarble, Limestone, Chalk, Dolomiteで見つかる(Fluxが作れる地質だけ？)。深いほど鉱脈が大きくなる。</td>
+                    </tr>
+
+                    <tr>
+                        <td>四面銅鉱[Tetraheadrite]</td>
+                        <td>Copper</td>
+                        <td>変成岩地層[Metamorphic]のどの深度でも見つかる。深いほど鉱脈が大きくなる。</td>
+                    </tr>
+
+                    <tr>
+                        <td>閃亜鉛鉱[Sphalerite]</td>
+                        <td>Zinc</td>
+                        <td>火山岩地層の地表付近で見つかる。深いほど鉱脈が大きくなる。</td>
+                    </tr>
+
+                    <tr>
+                        <td>蒼鉛鉱[Bismuthinite]</td>
+                        <td>Bismuth</td>
+                        <td>堆積岩地層[Sedimentary]の地表と深成岩地層[Igneous Intrusive]の深層に存在する。深いほど鉱脈が大きくなる。</td>
+                    </tr>
+
+                    <tr>
+                        <td>自然金[Native Gold]</td>
+                        <td>Gold</td>
+                        <td>火山岩地層・深成岩地層の70≧Yで見つかる。川で沈殿物[Deposits]が見つかることもある。深いほど鉱脈が大きくなる。</td>
+                    </tr>
+
+                    <tr>
+                        <td>自然銀[Native Silver]</td>
+                        <td>Silver</td>
+                        <td>高低差が激しい地域のGraniteとDioriteのY≧90以上で小さな鉱脈が見つかる。あるいはGranite, Diorite, Schist, Gneissの20≧Yでも見つかる。川で沈殿物[Deposits]が見つかることもある。</td>
+                    </tr>
+
+                    <tr>
+                        <td>磁鉄鉱[Magnetite]<br>褐鉄鉱[Limonite]</td>
+                        <td>Cast Iron</td>
+                        <td>堆積岩地層の地表付近で見つかる。</td>
+                    </tr>
+
+                    <tr>
+                        <td>赤鉄鉱[Hematite]</td>
+                        <td>Cast Iron</td>
+                        <td>火山岩地層の地表付近で見つかる。</td>
+                    </tr>
+
+                    <tr>
+                        <td>錫石[Cassiterite]</td>
+                        <td>Tin</td>
+                        <td>高低差が激しい地域の深成岩地層のY≧80かdikes(?)で見つかる。川で沈殿物[Deposits]が見つかることもある。</td>
+                    </tr>
+
+                    <tr>
+                        <td>珪ニッケル鉱[Garnierite]</td>
+                        <td>Nickel</td>
+                        <td>Gabbroの0≧Yで見つかり、その他の深成岩地層でも小さい鉱脈なら見つかる。</td>
+                    </tr>
+
+                    <tr>
+                        <td>瀝青炭[Bituminous Coal]</td>
+                        <td>Coal+</td>
+                        <td>堆積岩地層の地表付近で平たく広がって見つかる。Whiteまで熱が出る。</td>
+                    </tr>
+
+                    <tr>
+                        <td>褐炭[Lignite]</td>
+                        <td>Coal-</td>
+                        <td>堆積岩地層の地表付近で平たく広がって見つかる。Yellow-Whiteまで熱が出る。</td>
+                    </tr>
+
+                    <tr>
+                        <td>辰砂[Cinnabar]</td>
+                        <td>Redstone</td>
+                        <td>Quartzite, Granite, Phyllite, Schistの深いところで見つかる。石臼で挽いて粉にする。</td>
+                    </tr>
+
+                    <tr>
+                        <td>氷晶石[Cryolite]</td>
+                        <td>Redstone</td>
+                        <td>Granite, Dioriteの深いところで見つかる。石臼で挽いて粉にする。</td>
+                    </tr>
+
+                    <tr>
+                        <td>硝石[Saltpeter]</td>
+                        <td>Saltpeter</td>
+                        <td>硝酸カリウム。堆積岩地層の地表付近で平たく広がって見つかる。石臼で挽いて粉にする。</td>
+                    </tr>
+
+                    <tr>
+                        <td>カリ岩塩[Sylvite]</td>
+                        <td>Sylvite</td>
+                        <td>塩化カリウム。Shale, Claystone, Chertの地表付近で平たく広がって見つかる。石臼で挽いて粉にする。</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>ホウ砂[Borax]</td>
+                        <td>Borax</td>
+                        <td>Claystone, Limestone, Shaleの地表付近で平たく広がって見つかる。石臼で挽いてFluxにする。</td>
+                    </tr>
+
+                    <tr>
+                        <td>石膏[Gypsum]</td>
+                        <td>Gypsum</td>
+                        <td>堆積岩地層の地表付近で平たく広がって見つかる。</td>
+                    </tr>
+
+                    <tr>
+                        <td>岩塩[Halite]</td>
+                        <td>Halite</td>
+                        <td>堆積岩地層の地表付近で平たく広がって見つかる。石臼で挽いて塩にする。</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>硫黄[Sulfur]</td>
+                        <td>Sulfur</td>
+                        <td>変成岩地層、深成岩地層の深くの溶岩の周りで見つかる。</td>
+                    </tr>
+                    <tr>
+                        <td>ラピスラズリ[LapisLazli]</td>
+                        <td>LapisLazli</td>
+                        <td>Limestone, MarbleのY-20～80の間で見つかる。</td>
+                    </tr>
+
+                    <tr>
+                        <td>エメラルド[Emerald]</td>
+                        <td>Emerald</td>
+                        <td>深成岩地層に柱のように縦に細長く存在している。</td>
+                    </tr>
+
+                    <tr>
+                        <td>キンバーライト[Kimberlite]</td>
+                        <td>Diamond</td>
+                        <td>Gabbroに柱のように縦に細長く存在している。</td>
+                    </tr>
+
+                    <tr>
+                        <td>アメジスト[Amethyst]</td>
+                        <td>Amethyst</td>
+                        <td>堆積岩地層、変成岩地層の川付近でY≧40のところで見つかる。</td>
+                    </tr>
+                    <tr>
+                        <td>オパール[Opal]</td>
+                        <td>Opal</td>
+                        <td>堆積岩地層、火山岩馳走の川付近でY≧40のところで見つかる。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <select id="ore_geology_filter_list">
+            </select>
+
+            <div class="table-container">
+                <table id="ore_geology_table" class="scroll_table ore_geology">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <div class="article" id="wild_crop">
+            <h2>植物(野生種)[Wild Crop]の概要と必要素材</h2>
+            世界中を歩くと様々な野生の植物が小さな群生を作って存在している。
+            それらから種を採取して、農耕を行うことができる。
+            植物を採取するには素手やナイフで破壊し、その際にいくつかの成果物と種を得ることができる。<br>
+
+            野生種は6月～10月に実り、それ以降は来年の夏まで枯れてしまう。
+
+
+        </div>
+
+
+        <div class="article" id="farming">
+            <h2>農耕[Farming]の概要と必要素材</h2>
+            
+
+            <table id="plant_farming_filter_table">
+                <tbody>
+                    <tr>
+                        <td>Filter1</td>
+                        <td><select></select></td>
+                        <td><input type="text" value="^[^F]"> </td>
+                    </tr>
+                    <tr>
+                        <td>Filter2</td>
+                        <td><select></select></td>
+                        <td><input type="text" value=""> </td>
+                    </tr>
+                    <tr>
+                        <td>Filter3</td>
+                        <td><select></select></td>
+                        <td><input type="text"> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-container">
+                <table id="plant_farming_table" class="scroll_table plant_farming">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+          
+        </div>
+
+
+
+
+        <div class="article" id="fire_clay">
+            <h2>耐火粘土[Fire Clay]の概要と必要素材</h2>
+            鉄の時代から鋼鉄の時代へ進むために不可欠。
+            耐火粘土はるつぼ[Crucible]、耐火レンガ[Fire Bricks]の作成に必要。<br>
+            カオリン粘土[Kaolin Clay]はかなり限られた地域にしか存在しないので、まずはカオリン粘土がある地域
+            を目指してから他のものを集めよう。<br>
+            カオリン粘土は叩くと赤いパーティクルが出るよ
+
             <ultitle>必要素材:</ultitle>
             <ul>
-                <li></li>
+                <li>粘土</li>
+                <li>
+                    黒鉛の粉[Graphite Powder]
+                    <info>
+                        黒鉛[Graphite]を石臼で挽く。
+                        黒鉛は特定の岩の深度Y60以下にしか存在しない。
+                        https://terrafirmacraft.github.io/Field-Guide/en_us/the_world/geology.html
+
+
+                        <ul>
+                            <li>Quartzite･･･Chertの深い層に存在することもある</li>
+                            <li>Schist･･･Phylliteの深い層に存在することもある</li>
+                            <li>Gneiss･･･Phylliteの深い層に存在することもある</li>
+                            <li>Marble･･･Chalk/Limestone/Dolomiteの深い層に存在することもある</li>
+                        </ul>
+
+                    </info>
+                </li>
+                <li>
+                    カオリン粉[Kaolinite Powder]
+                    <info>
+                        カオリン粘土を焼くことで20%の確率で入手。<br>
+                        カオリン粘土は、以下の地域で地表付近の深さ1～3ブロックに粘土のように配置される。
+                        <ul>
+                            <li>Plateaus, Old Mountains, Highlands</li>
+                            <li>平均気温18℃以上</li>
+                            <li>雨量300mm以上</li>
+                            <li>彼岸花[Blood Lily]が生えているので目印にする</li>
+                        </ul>
+                         at least 18℃ 300mm rainfall, Blood Lily grows On。
+
+                    </info>
+                    <img src="img/blood_lily.png" style="width: 500px;">
+
+                </li>
             </ul>
         </div>
-        
-        
+
+
+
+        <div class="article" id="pot">
+            <h2>鍋[Pot]の概要と必要素材</h2>
+            <ultitle>必要素材:</ultitle>
+
+        </div>
+
+
         <div class="article" id="panning">
-            <h2>砂金取り[panning]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>砂金取り[panning]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             <ultitle>必要素材:</ultitle>
             <ul>
                 <li>陶器のパン[Ceramic Pan]</li>
@@ -37,10 +597,10 @@
                         <li>銅を含む砂利</li>
                         <li>金を含む砂利</li>
                         <li>銀を含む砂利</li>
-                        <li>錫を含む砂利</li>                    
+                        <li>錫を含む砂利</li>
                     </ul>
                 </li>
-                
+
             </ul>
 
             <ultitle>作業手順:</ultitle>
@@ -53,8 +613,8 @@
         </div>
 
         <div class="article" id="prospecting">
-            <h2>鉱山調査[Prospecting]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>鉱山調査[Prospecting]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             地表に鉱物の小片が落ちているとその下に鉱山が存在する。
 
             <ul>
@@ -66,11 +626,11 @@
             探鉱槌[Prospector's Pick]を使い鉱脈を探す。<br>
             探索範囲は自分を中心に各方向に12ブロック(自分を中心に25ブロック)<br>
             "A Very Large Sample Of ～"の場合、少なくとも80個の鉱物ブロックが存在する。
-            
+
         </div>
-    
+
         <div class="article" id="quern">
-            <h2>石臼[Quern]の概要と必要素材</h2>       
+            <h2>石臼[Quern]の概要と必要素材</h2>
             穀物を粉にしたり、染料を作ったりするのに使用する。
             <ultitle>必要素材:</ultitle>
             <ul>
@@ -80,10 +640,10 @@
                 <info>上部の作成に使用</info>
             </ul>
         </div>
-        
+
         <div class="article" id="sald">
-            <h2>サラダ[salad]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>サラダ[salad]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             <ultitle>必要素材:</ultitle>
             <ul>
                 <li>ボウル[Bowl]</li>
@@ -96,9 +656,9 @@
             ボウルを持ちShiftを押しながら右クリックするとサラダ作成ウィンドウが開く。<br>
             果物、野菜、焼いた肉を組み合わせて最大で5つまでセットできる。
         </div>
-    
+
         <div class="article" id="sandwich">
-            <h2>サンドイッチ[Sandwich]の概要と必要素材</h2>       
+            <h2>サンドイッチ[Sandwich]の概要と必要素材</h2>
             <ultitle>必要素材:</ultitle>
             <ul>
                 <li>ナイフ[Knife]</li>
@@ -112,30 +672,30 @@
             サンドイッチを作成した瞬間から新たな消費期限が設定される。
 
         </div>
-        
+
         <div class="article" id="support_beam">
-            <h2>梁[Support Beam]と崩落の概要と必要素材</h2>       
-            <unchecked>一部未検証</unchecked> 
+            <h2>梁[Support Beam]と崩落の概要と必要素材</h2>
+            <unchecked>一部未検証</unchecked>
             土や石の崩落を防ぐ。
             梁の水平部分を中心に前後左右に4ブロック、上下に2ブロック 9x9x5ブロックの範囲を
             支持された状態にする。支持されていないブロックを破壊すると崩落する可能性があり、
             その時は支持されているブロックも含めて崩落する。
-            
+
             一番下（天井）にブロックを配置することでも支持された状態になるが、
             階段・半ブロック・なめらかな石など一部のブロックでは支持されない。
             （半ブロック2つ置きは支持されているはず…）
             ノミ[Chisel]で石を加工した時も崩落する可能性がある。
 
         </div>
-    
+
         <div class="article" id="not_defined">
-            <h2>[]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>[]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
         </div>
-        
+
         <div class="article" id="not_defined">
-            <h2>[]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>[]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
         </div>
 
 
@@ -143,7 +703,33 @@
 
         <h1>ちょっと先のはなし</h1>
 
-            
+
+
+        <div class="article" id="steel">
+            <h2>鋼鉄[Steel]の概要と必要素材</h2>
+            <img src="img/steel.png" style="width: 600px;">
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="article" id="glass_working">
             <h2>ガラス細工[Glass working]の概要と必要素材</h2>
             <unchecked>未検証</unchecked>
@@ -179,13 +765,37 @@
                 </li>
 
                 <li>
+                    真鍮の作業テーブル(マルチブロック)
+                    <info>完成品をテーブルから外すにはガラスのこ[Gem Saw]が必要</info>
+                    <ul>
+                        <li>
+                            真鍮テーブル用ブロック[Brass Plated Brock]
+                            <ul>
+                                <li>真鍮のプレート</li>
+                                <li>木材</li>
+                                <li>(ハンマー)</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    ガラスブロック[Stained Glass]用テーブル
+                    <info>炉のように、上面以外の5面を真鍮テーブル用ブロックにする</info>
+                    <br>
+                    ガラス板[Stained Glass Pane]用テーブル
+                    <info>
+                        最大16マスまで並べて作る<br>
+                        熱したガラスをたたいて引き延ばす
+                    </info>
+                </li>
+
+                <li>
                     木ごて[Paddle](叩き工程[Flatten]で使用)
                     <info>以下の材料で製作</info>
                     <ul>
                         <li>板材(Lumber)</li>
                     </ul>
                 </li>
-                
+
                 <li>
                     洋ばし[Jacks](つまみ工程[Pinch]で使用)
                     <info>以下の材料で製作</info>
@@ -194,7 +804,7 @@
                         <info>2つのロッドを溶接して作成</info>
                     </ul>
                 </li>
-            
+
                 <li>
                     ガラスのこ[Gem Saw](切断工程[Saw]で使用)
                     <info>以下の材料で製作</info>
@@ -203,6 +813,7 @@
                         <li>宝石の粉末[Gem Powder]</li>
                         <info>宝石の粉末はおそらく各種宝石が使用可能(未検証)</info>
                     </ul>
+                    <info>ガラスブロック・ガラスパネルをテーブルから取り外すのにも使用</info>
                 </li>
 
                 <li>
@@ -219,7 +830,7 @@
             <ul class="number weak">
                 <li>吹き竿とシリカをクラフトする</li>
                 <li>FaintRedまで熱する</li>
-                <li>各ガラス製品の作成手順に従い、Blow, Stretchなどを行う</li>
+                <li>各ガラス製品の作成手順に従い、Blow, Sawなどを行う</li>
                 <info>何度も熱して作業を行う必要あり</info>
             </ul>
 
@@ -233,7 +844,7 @@
 
                 <li>叩き工程[Flatten]</li>
                 <info><uwavy>オフハンドに木ごて</uwavy>を持ち右クリック</info>
-                
+
                 <li>つまみ工程[Pinch]</li>
                 <info><uwavy>オフハンドに洋ばし</uwavy>を持ち右クリック</info>
 
@@ -247,8 +858,30 @@
             <ultitle>主なガラス製品の作業工程:</ultitle>
             <ul>
                 <li>
-                    ガラス瓶[Jar]
-                    <info>シリカか赤鉄砂のガラスバッチでのみ製作可能。なお、長期保存には錫の蓋[Tin Lid]が必要</info>
+                    ガラスブロック[Stained Glass Block]
+                    <info>真鍮のガラス作成テーブルが必要</info>
+                    <ul class="number weak">
+                        <li>テーブルのくぼみで右クリック</li>
+                        <li>ガラスのこで取り出す</li>
+                    </ul>
+                </li>
+
+                <li>
+                    ガラスパネル[Stained Glass Panel]
+                    <info>真鍮のガラス作成テーブルが必要</info>
+                    <ul class="number weak">
+                        <li>テーブルの上で右クリック</li>
+                        <li>木ごてでガラスを右クリックして伸ばす</li>
+                        <li>ガラスのこで取り出す</li>
+                    </ul>
+                </li>
+
+                <li>
+                    ガラス容器[Jar]
+                    <info>
+                        ハチミツの回収などに使用。<br>
+                        シリカか赤鉄砂のガラスバッチでのみ製作可能。なお、長期保存には錫の蓋[Tin Lid]が必要
+                    </info>
                     <ul class="number weak">
                         <li>吹き工程[Blow]</li>
                         <li>つまみ工程[Pinch]</li>
@@ -259,7 +892,10 @@
 
                 <li>
                     ガラスボトル[Glass Bottle]
-                    <info>ガラスバッチの種類により製作できる個数が変わる</info>
+                    <info>
+                        飲料水400mbを持ち運べる。1回100mb使用。<br>
+                        ガラスバッチの種類により製作できる個数が変わる
+                    </info>
                     <ul class="number weak">
                         <li>吹き工程[Blow]</li>
                         <li>つまみ工程[Pinch]</li>
@@ -290,17 +926,17 @@
         </div>
 
         <div class="article" id="weaving">
-            <h2>紡績[Weaving]の概要と必要素材</h2> 
-            <unchecked>未検証</unchecked>  
+            <h2>紡績[Weaving]の概要と必要素材</h2>
+            毛がもこもこの家畜[Wooly Animals]を倒すとドロップ、あるいは仲良くなりハサミでカットして取得する羊毛玉[Wool]を加工する。
 
             <ultitle>作成できるもの:</ultitle>
             <ul>
-                <li>ウール布</li> 
+                <li>ウール布</li>
                 <li>シルク布</li>
                 <li>麻布</li>
                 <info>使い道がない・・・？</info>
             </ul>
-            
+
             <ultitle>必要素材:</ultitle>
             <ul>
                 <li>織機[Loom]</li>
@@ -327,7 +963,7 @@
                             一度も子供を産まなければ128回毛を刈り取れる。<br>
                             毛は9日間で復活する。
                         </info>
-        
+
                         <li>羊[Sheep]</li>
                         <info>
                             乾燥した気候[drier climates]、0℃～30℃、雨量70～300mm<br>
@@ -337,7 +973,7 @@
                             一度も子供を産まなければ60回毛を刈り取れる。<br>
                             毛は9日間で復活する。
                         </info>
-        
+
                         <li>ジャコウウシ[Musk Ox]</li>
                         <info>
                             寒冷な気候[cold climates]、-25℃～0℃、雨量100mm以上<br>
@@ -352,15 +988,20 @@
                     <info>粘土でコマの頭[Spindle Head]を作成し、棒とクラフト</info>
                 </ul>
                 <info>羊毛とコマをクラフトし作成</info>
+            </ul>
 
-                
-            </ul> 
-            
+            <ultitle>作業手順:</ultitle>
+            <ul class="number">
+                <li>織機に糸を16～24個(糸の種類により異なる)をセット</li>
+                <li>布ができるまでひたすら織機を右クリック</li>
+                <li>布を空の手で右クリックして取り外す</li>
+            </ul>
+
 
         </div>
 
         <div class="article" id="light_source">
-            <h2>TFCの光源の概要と必要素材</h2> 
+            <h2>TFCの光源の概要と必要素材</h2>
             <unchecked>一部未検証</unchecked>
             <ul>
                 <li>たいまつ[Torch]</li>
@@ -382,7 +1023,7 @@
                         <info><a href="#liquid_fuel">液体燃料</a>で作成方法を確認</info>
                     </ul>
                 </li>
-            </ul>       
+            </ul>
         </div>
 
 
@@ -397,15 +1038,15 @@
             <ul>
                 <li>ランプガラス[Lamp Glass]</li>
                 <li>ランプ枠[Metal Unfinished Lamp]</li>
-                <li>液体燃料</li>            
-            </ul>  
-            鎖[Chain]を使ってランプを吊るすことができます。       
+                <li>液体燃料</li>
+            </ul>
+            鎖[Chain]を使ってランプを吊るすことができます。
         </div>
 
 
         <div class="article" id="liquid_fuel">
-            <h2>液体燃料[Liquid Fuel]の概要と必要素材</h2>   
-            <unchecked>未検証</unchecked>  
+            <h2>液体燃料[Liquid Fuel]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             ランプで使用する。
             <ul>
                 <li>オリーブオイル[Olive Oil]</li>
@@ -421,7 +1062,7 @@
                     <li>鍋に水と潰したオリーブを入れ、オリーブ水[Olive Oil Water]を作る</li>
                     <li>樽にオリーブ水と麻のネットを入れて蓋をし、オリーブオイルの完成</li>
                 </ul>
-                
+
                 <li>獣脂</li>
                 <info>2時間燃える。ろうそく[Candle]の製作にも使う。鍋に水と精製前の獣脂[Blubber]を5個入れて製作。</info>
 
@@ -432,13 +1073,13 @@
 
 
         <div class="article" id="leather_making">
-            <h2>レザークラフト[Lether Making]の概要と必要素材</h2>   
+            <h2>レザークラフト[Lether Making]の概要と必要素材</h2>
             革製品には以下のようなアイテムが存在する
             <ul>
                 <li>防具[Armor]</li>
                 <li>サドル[Saddle]</li>
                 <li>ふいご[Bellow]</li>
-            </ul>     
+            </ul>
 
             革の作成に必要な素材:
             <ul>
@@ -446,10 +1087,21 @@
                 <info>樽に水とフラックス[Flux]を入れたらすぐにできる</info>
                 <li>水の樽</li>
                 <li>タンニン[Tannin]の樽</li>
-                <info>ChestNuts Oak の原木をタルに入れて制作 1000mb/個</info>
+                <info>
+                    特定のの原木をタルに入れて制作 1000mb/個
+                <ul>
+                    <li>Oak</li>
+                    <li>Squoia</li>
+                    <li>Birch</li>
+                    <li>Chestnut</li>
+                    <li>Douglas Fir</li>
+                    <li>Hickory</li>
+                    <li>Maple</li>
+                </ul>
+                </info>
                 <li>皮[Small/Medium/Large Raw Hide]</li>
             </ul>
-            
+
             作成手順:
             <ul class="number weak">
                 <li>皮を石灰水の樽に漬け込む</li>
@@ -463,31 +1115,211 @@
         </div>
 
 
-        <div class="article" id="not_defined">
-            <h2>食材の保存[Preservation]の概要と必要素材</h2> 
+        <div class="article" id="preservation">
+            <h2>食材の保存[Preservation]の概要と必要素材</h2>
             <ul>
                 <li>酢漬け</li>
-            </ul>       
+            </ul>
         </div>
 
 
-        <div class="article" id="not_defined">
-            <h2>ボウル[Bowl]の概要と必要素材</h2>   
+        <div class="article" id="bowl">
+            <h2>皿[Bowl]の概要と必要素材</h2>
             <unchecked>未検証</unchecked>
+            <ultitle>陶器の皿[Ceramic Bowl]を作るのに必要な素材:</ultitle>
+            <ul>
+                <li>
+                    粘土
+                    <info>うまく作れば1回のクラフトで2個できる。</info>
+                </li>
+            </ul>
+
+            <ultitle>木の皿[Wooden Bowl]を作るのに必要な素材:</ultitle>
+            <ul>
+                <li>板材</li>
+                <li>
+                    接着剤[Glue]
+                    <info>
+                        石灰水の樽に骨の粉[Bone Meal]を入れて作成。
+                    </info>
+                </li>
+            </ul>
+
+            補足:
             <ul>
                 <li>粉を16個乗せられる</li>
                 <li>塩を乗せたボウルを設置して肉を持ち右クリックすると塩をまぶせる</li>
-            </ul>     
+            </ul>
         </div>
 
 
         <div class="article" id="mechanical">
-            <h2>機械動力[Mechanical Power]の概要と必要素材</h2> 
+            <h2>機械動力[Mechanical Power]の概要と必要素材</h2>
             <unchecked>未検証</unchecked>
+
+            <ul>
+                <li>
+                    動力源[Mechanical Power Source]
+                    <info>
+                        水車、風車がある。後述
+                    </info>
+                </li>
+                <li>
+                    軸[Axle]
+                    <info>
+                        回転を伝える軸<br>
+                        最大5個まで延長可能。<br>
+                        (風車などを挟むとそこからさらに5個可能)
+                        <ul>
+                            <li>原木</li>
+                            <li>
+                                接着剤[Glue]
+                                <info><a href="#bowl">→皿[Bowl]の概要と必要素材</a></info>
+                            </li>
+                        </ul>
+                    </info>
+                </li>
+
+                <li>
+                    軸ボックス[Encased Axle]
+                    <info>
+                        軸と同じだが箱に入れられている<br>
+                        <ul>
+                            <li>原木</li>
+                            <li>軸</li>
+                            <li>板材</li>
+                        </ul>
+                    </info>
+                </li>
+
+                <li>
+                    ギアボックス[Gear Box]
+                    <info>
+                        軸の向きを切り替える。また、軸の延長にも使う。<br>
+                        <uwavy>ハンマーを持ち、側面を右クリックすることで入出力口を作る。</uwavy><br>
+                        <uwavy>2軸までしか入出力口は作れない。</uwavy>
+                    </info>
+                </li>
+
+                <li>
+                    クラッチ[Clutch]
+                    <info>
+                        レッドストーンの入力で回転の伝達を制御できる軸ボックス。
+                        <ul>
+                            <li>原木</li>
+                            <li>板材</li>
+                            <li>真鍮の部品</li>
+                            <li>軸</li>
+                            <li>レッドストーン</li>
+                        </ul>
+                    </info>
+                </li>
+            </ul>
+
+
+
+
+            <strong>動力源:</strong>
+            <ul>
+                <li>
+                    風車[Windmill]
+                    <info>
+                        13x13x1の空間が設置に必要
+                        <ultitle>必要な素材:</ultitle>
+                    </info>
+
+                    <ul>
+                        <li>軸[Axle]</li>
+                        <li>
+                            風車の羽根[Windmill Blade]
+                            <ul>
+                                <li>板材</li>
+                                <li>羊毛の布[Wool Cloth]</li>
+                                <info><a href="#weaving">→紡績[Weaving]の概要と必要素材</a></info>
+                            </ul>
+                        </li>
+                    </ul>
+                    <info>
+                        <ultitle>作成手順:</ultitle>
+                        <ul class="number">
+                            <li>高さを少なくとも地表から7以上の位置に水平方向に軸を設置</li>
+                            <info>風車は13x13x1の範囲が必要</info>
+                            <li>風車の羽根を軸に取り付ける</li>
+                            <li>風車の羽根は多いほど効率が上がり、最大5個まで設置可能</li>
+                            <info>軸がすでに別の動力源に接続されていたり、スペースが足りないと風車は破壊される</info>
+                        </ul>
+                    </info>
+                </li>
+
+                <li>
+                    水車[Water Wheel]
+                    <info>
+                        流れる川に5x5x1の範囲で設置<br>
+                        軸の真下のブロックが流れる水源であればスピードが上がる。<br>
+                        おそらく流れる水源に浸かっている部分が多いとスピードが上がる。
+                        <ul>
+                            <li>軸</li>
+                            <li>木材</li>
+                            <li>板材</li>
+                        </ul>
+                    </info>
+                </li>
+            </ul>
+
+
+            <ultitle>動かせるもの</ultitle>
+            <ul>
+                <li>
+                    石臼[Quern]
+                    <ul class="number">
+                        <li>軸を石臼に垂直に接続する</li>
+                    </ul>
+                </li>
+
+                <li>
+                    トリップハンマー[Trip Hammer]
+                    <ul>
+                        <li>
+                            でっぱり付きの軸[Bladed Axle]
+                            <ul>
+                                <li>軸</li>
+                                <li>鋼鉄インゴット[Steel Ingot]</li>
+                            </ul>
+                        </li>
+                        <li>
+                            トリップハンマー本体[Trip Hammer]
+                            <ul>
+                                <li>鋼鉄のシート[Steel Sheet]</li>
+                                <li>真鍮の部品</li>
+                                <li>鋼鉄のロッド[Steel Rod]</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <ultitle>使い方:</ultitle>
+                <ul class="number">
+                    <li>でっぱり付きの軸を水平に設置</li>
+                    <li>でっぱりの回転方向に合わせてトリップハンマー本体を設置</li>
+                    <info>向きがあるのでハンマーの柄を押すように設置のこと</info>
+                    <li>トリップハンマーの上部から金属製のハンマーを右クリックで設置</li>
+                    <li>ハンマーが振り下ろされる位置に金床を設置</li>
+                    <li>加工したい金属を金床に置く</li>
+                    <info>
+                        金属が加工できない温度の時や金床のTierが足りない時は
+                        異常な金属音が出るので確認しよう。<br>
+                        試してみたところ鉄の精錬1段階くらいは終わる速度っぽい
+                    </info>
+                </ul>
+            </ul>
         </div>
+
+
+
+
         <div class="article" id="minecart">
-            <h2>カート[Minecart]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>カート[Minecart]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             主にサイズがHugeのものを運ぶのに使う。<br>
             大きい壺、樽、金床、るつぼ[Crucible]を右クリックで積載できる。<br>
             レールに使う素材:
@@ -504,8 +1336,8 @@
                 <info>アクティベーターレールの作成に使う</info>
 
                 <li>レッドストーン</li>
-                <info>ディテクターレールの作成に使う</info>           
-            </ul>        
+                <info>ディテクターレールの作成に使う</info>
+            </ul>
 
             カートに使う材料:
             <ul>
@@ -514,56 +1346,56 @@
 
                 <li>鋼鉄のシート[Steel Sheet]</li>
                 <info>5枚で2つのカートができる。</info>
-            </ul>        
+            </ul>
         </div>
-        
+
         <div class="article" id="paper_making">
-            <h2>紙製品の作成[Paper Making]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>紙製品の作成[Paper Making]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
         </div>
-        
+
         <div class="article" id="pet">
-            <h2>ペット[Pet]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>ペット[Pet]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             家畜と似ているが何も産出しない。
         </div>
-        
+
         <div class="article" id="pump">
-            <h2>ポンプ[pump]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>ポンプ[pump]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             水路[Aqueduct]と違い上にもってこれる。<br>
             機械動力とクランクシャフトが必要
         </div>
-        
+
         <div class="article" id="scribing_table">
-            <h2>製図台[Scribing Table]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>製図台[Scribing Table]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             アイテムに名前をつけるのに使う？
         </div>
-        
+
         <div class="article" id="sluice">
-            <h2>スルース[Sluice]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>スルース[Sluice]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             砂金取りと同じようなもの
             作成にノコギリが必要なので使うことあるんか？
-        </div>  
+        </div>
 
-        
+
         <div class="article" id="powderkeg">
-            <h2>火薬樽[Powderkeg]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>火薬樽[Powderkeg]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
         </div>
-        
+
         <div class="article" id="not_defined">
-            <h2>[]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>[]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
         </div>
-        
+
         <div class="article" id="not_defined">
-            <h2>[]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>[]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
         </div>
-        
+
 
 
 
@@ -612,9 +1444,9 @@
         <h1>Firma Life Addon</h1>
 
         <div class="article" id="life_difference">
-            <h2>Addonを導入したことによる差異</h2>       
-            
-            <ul>            
+            <h2>Addonを導入したことによる差異</h2>
+
+            <ul>
                 <li>
                     養蜂[Bee Keeping]の拡張
                     <info>
@@ -625,7 +1457,7 @@
                     肥料の新たな入手法
                     <info>
                         <a href="#life_fertilizer">→回転式コンポスターの概要と必要素材</a>
-                    </info>                
+                    </info>
                 </li>
                 <li>
                     オーブン[Oven]の追加
@@ -666,7 +1498,7 @@
                                     (酵母100mbで粉1個消費し600mbになる)
                                 </info>
                             </li>
-                            
+
                             <li>砂糖</li>
                             <li>穀物粉[Flour]</li>
                         </ul>
@@ -680,36 +1512,36 @@
                     ジャムの追加
                     <info>
                         なべで作るほか、オーブンと寸胴鍋を使い大量に生産できるかも。
-                        <unchecked>未検証</unchecked> 
+                        <unchecked>未検証</unchecked>
                     </info>
                 </li>
 
                 <li>
                     乾物[Drying]
-                    <info>    
-                        
+                    <info>
+
                         乾燥マット[Drying Mat]を使い乾物を作成できる。<br>
                         日光が当たる地面にマットを設置し、食材を右クリックで置く。<br>
                         半日後に乾燥するが、雨が降ったらリセットされ再び半日かかる。
-                        <ultitle>必要な材料: </ultitle>      
+                        <ultitle>必要な材料: </ultitle>
                         <ul>
                             <li>果物の葉[Fruit Leaf]</li>
                             <info>果物の木の葉ブロックを破壊すると取得できる。</info>
                         </ul>
-                        <unchecked>未検証</unchecked> 
+                        <unchecked>未検証</unchecked>
                         日光ドライヤー[Solar Drier]をう買うと12倍速くなる。
                         （レシピはゲーム内で確認）<br>
-                        <ultitle>必要な材料: </ultitle>      
+                        <ultitle>必要な材料: </ultitle>
                         <ul>
                             <li>???</li>
                         </ul>
                     </info>
                 </li>
 
-                <li>                
+                <li>
                     燻製[Smoking]
                     <info>
-                        <unchecked>未検証</unchecked> 
+                        <unchecked>未検証</unchecked>
                         羊毛の糸[Wool String]を燻製する食べ物をつるすために使う。
                         <ul>
                             <li>羊毛の糸[Wool String]</li>
@@ -722,9 +1554,9 @@
                         燻製は8時間で完成します。
                     </info>
                 </li>
-    
+
                 <li>
-                    ハーブ・スパイスの追加                      
+                    ハーブ・スパイスの追加
                     <info>
                         <unchecked>未検証</unchecked>
                         小さい植物を自分で集めることもできますが、シードボール[Seed Ball]を作り、その辺に撒くとより簡単に取得できます。
@@ -738,17 +1570,81 @@
                             <li>なんらかの種[Seed]</li>
                             <li>肥料[Compost]</li>
                         </ul>
-                
+
                         <ultitle>収穫できるハーブ:</ultitle>
                         <ul>
                             <li>バジル[Basil]</li>
                             <info>ナイフとクラフトしてバジルの葉[Basil Leaves]にし、ピザに乗せる。</info>
+                            <li>
+                                オレガノ[Oregano]
+                                <info>
+                                    ラザニア[Lasagna]の材料
+                                    <ul>
+                                        <info>混ぜボウルで作成</info>
+                                        <li>
+                                            ラザニアシート[Raw Egg Noodle]
+                                            <ul>
+                                                <li>穀物粉</li>
+                                                <li>塩</li>
+                                                <li>卵</li>
+                                                <li>ミルク[Any Milk]</li>
+                                            </ul>
+                                        </li>
+                                        <li>オレガノ</li>
+                                        <li>
+                                            トマトソース[Tomato Sauce]
+                                            <info>水の入った寸胴鍋[Vat]でトマトベース[Tomato Sauce Mix]を煮る</info>
+                                            <ultitle>トマトベースの材料</ultitle>
+                                            <ul>
+                                                <li>トマト</li>
+                                                <li>塩</li>
+                                                <li>ニンニク</li>
+                                            </ul>
+                                        </li>
+                                        <li>焼いた肉か魚[Cooked Meat/Fish]</li>
+                                    </ul>
+                                </info>
+                            </li>
+
+
+                            <li>クミン[Cumin]</li>
+                            <li>
+                                コリアンダー[Cilantro]
+                                <info>サルサの材料になる</info>
+                                <info>
+                                    <ul>
+                                        <li>トマト</li>
+                                        <li>塩</li>
+                                        <li>コリアンダー</li>
+                                        <li>(ナイフ)</li>
+                                    </ul>
+                                </info>
+                            </li>
+
+                            <li>カルダモン[Cardamom]</li>
+                            <li>
+                                バニラ[Vanilla]
+                                <info>
+                                    アイスクリームの材料になる。
+                                    <ul>
+                                        <li>砂糖</li>
+                                        <li>乾燥したバニラ[Vanilla]</li>
+                                        <info>天日干しする</info>
+                                        <li>氷[Ice Shavings]</li>
+                                        <li>クリーム1000mb[Cream]</li>
+                                    </ul>
+                                </info>
+
+                            </li>
+                            <li>オールスパイス[Pimento]</li>
+                            <li>月桂樹[Bay Laurel]</li>
                             <li>他は不明</li>
+
                         </ul>
                     </info>
-                    
+
                 </li>
-                
+
                 <li>
                     混ぜ用ボウルの追加
                     <info>
@@ -756,19 +1652,19 @@
                             <li>板材</li>
                             <li>接着剤</li>
                         </ul>
-                
+
                         <ultitle>スプーンの必要素材:</ultitle>
                         <ul>
                             <li>不明</li>
-                        </ul>  
+                        </ul>
                     </info>
                 </li>
-                
+
                 <li>
                     ステンレス[Stainless Steel]の追加
-                    <info>     
-                        <unchecked>未検証</unchecked> 
-                
+                    <info>
+                        <unchecked>未検証</unchecked>
+
                         <table>
                             <thead>
                                 <tr>
@@ -783,13 +1679,13 @@
                                     <td>20</td>
                                     <td>30</td>
                                 </tr>
-                
+
                                 <tr>
                                     <td>Nickel</td>
                                     <td>10</td>
                                     <td>20</td>
                                 </tr>
-                
+
                                 <tr>
                                     <td>Steel</td>
                                     <td>60</td>
@@ -797,15 +1693,15 @@
                                 </tr>
                             </tbody>
                         </table>
-                
+
                         火山岩[Igneous Intrusive Rock]と変成岩[Metamorphic Rock]から見つかる。
                     </info>
                 </li>
-                
-                
+
+
                 <li>カカオの木[Cocoa Tree]およびチョコレート[Chocolate]の追加</li>
                 <info>
-                    <unchecked>未検証</unchecked> 
+                    <unchecked>未検証</unchecked>
                     20～35℃、雨量220～400㎜<br>
                     <ultitle>作成手順:</ultitle>
                     <ul class="number">
@@ -841,11 +1737,11 @@
                     それを紡績の要領で布にする。
                 </info>
             </ul>
-        </div>  
-        
+        </div>
+
         <div class="article" id="life_fertilizer">
-            <h2>回転式コンポスターの概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>回転式コンポスターの概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             機械動力につなげて使用。操作は動いていない時のみ可能。<br>
             TFCのコンポスターのように緑16:茶16ぴったりでなくても肥料が作れる。<br>
             32ユニット保持でき、TFCと同じようにアイテムごとに緑か茶の1～4ユニットが設定されている。<br>
@@ -903,13 +1799,13 @@
         <div class="article" id="not_herb_spice">
 
         </div>
-        
+
 
 
 
 
         <div class="article" id="life_oven">
-            <h2>オーブン[Oven]の概要と必要素材</h2>       
+            <h2>オーブン[Oven]の概要と必要素材</h2>
             最低限のオーブンの必要素材:
             <ul>
                 <li>オーブン上部[Top Oven]</li>
@@ -928,18 +1824,18 @@
                         <li>木のボウル</li>
                     </ul>
                 </li>
-            
+
             </ul>
 
             粘土の状態のオーブンを組み立てた後は焼き固める必要がある。
             原木を燃やして600℃(DarkRed+？)以上の温度で80秒間経つと完成する。
 
             <div class="sub_article" id="life_oven_additional">
-                <h2>オーブン関連</h2>       
-                <unchecked>未検証</unchecked> 
+                <h2>オーブン関連</h2>
+                <unchecked>未検証</unchecked>
                 <h3>オーブンの断熱材[Oven Insulation]を煙突以外の側面に貼りレンガの代わりにする</h3>
                 <comment>
-                    Crafting oven insulation for your Bottom Oven allows you to remove the need for insulating it on the sides and back. It does not remove the need for the chimney. 
+                    Crafting oven insulation for your Bottom Oven allows you to remove the need for insulating it on the sides and back. It does not remove the need for the chimney.
                     <br>下部だけ・・・？よくわからん
                 </comment>
 
@@ -970,7 +1866,7 @@
                     </li>
                 </ul>
 
-                <unchecked>未検証</unchecked> 
+                <unchecked>未検証</unchecked>
                 <h3>原木投入装置[Oven Hopper]</h3>
                 4x4の原木を保持でき、隣接したオーブンに供給する。ホッパーと同じように上から投入できる。
                 <ul>
@@ -979,7 +1875,7 @@
                 </ul>
 
 
-                <unchecked>未検証</unchecked> 
+                <unchecked>未検証</unchecked>
                 <h3>灰のトレイ[Ashtray]</h3>
                 オーブン下部の直下に設置し、灰を集める。<br>
                 原木を消費した時に50%の確立で発生する。
@@ -988,7 +1884,7 @@
                     <li>ホッパー</li>
                 </ul>
 
-                <unchecked>未検証</unchecked> 
+                <unchecked>未検証</unchecked>
                 <h3>寸胴鍋[Vat]</h3>
                 食材を加熱できる。樽のようなインターフェース。空の手でシフトを押してクリックで占める。
                 密封したらに始める。完成後の量が限界を超える場合は調理が始まらない。
@@ -999,35 +1895,37 @@
                     <li>ホッパー</li>
                 </ul>
 
-                unchecked>未検証</unchecked> 
+                unchecked>未検証</unchecked>
                 <h3>充填マシン？[Jarring Station]</h3>
                 寸胴鍋から瓶詰するのに使う。側面に注ぎ口がある。
                 寸胴鍋を使い砂糖水を作り、果物を足すと果物の液体[Fruity Fruid]になる。
                 空の蓋付きビンでクリックすると瓶詰ができる。パイプで大量に輸送しようとするとえらいことになる
                 果物の液体をビン詰めするには500mb必要
-                
+
                 <ul>
                     <li>オーブン下部</li>
                     <li>ホッパー</li>
                 </ul>
             </div>
-        </div>  
+        </div>
 
 
 
 
 
         <div class="article" id="life_beekeeping">
-            <h2>養蜂[Beekeeping]の概要と必要素材</h2>         
-            <unchecked>未検証</unchecked> 
-            巣箱を設置して養蜂を行う。
+            <h2>養蜂[Beekeeping]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
+            巣箱を設置して養蜂を行う。<br>
+            <uwavy>巣箱設置後、巣枠を最大4つ配置することを忘れないこと！！</uwavy><br>
+            ちょうちょエリア?[Butterfly Grass]ではなかなか女王バチが来なかったので、自分で花を植えたら割とすぐに来た。<br>
 
-            
+
             <ul>
                 <li>
                     木製巣箱[Wooden Beehive]
                     <ul>
-                        <li>巣箱の枠[Beehive Frame]</li>
+                        <li>巣枠[Beehive Frame]</li>
                         <info>板材で作成</info>
                         <li>板材</li>
                         <li>藁束[Thatch]</li>
@@ -1060,7 +1958,7 @@
 
                 <li>変異性[Mutant]</li>
                 <info>遺伝時の値の変動が増大</info>
-                
+
                 <li>繁殖力[Fertility]</li>
                 <info>繁殖しやすさ</info>
 
@@ -1078,18 +1976,18 @@
 
             蜂はハチミツを産出し、空のビンを使いハチミツを取り出すことができます。
             ハチミツは砂糖のように使用することが可能です。
-            
+
             ナイフを持ち女王バチが住んでいる枠を右クリックすると蜜蝋が得られますが、女王バチは死んでしまいます。
 
 
-        </div>  
-        
+        </div>
+
 
 
 
         <div class="article" id="life_cheese">
-            <h2>チーズ作り[Cheese]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>チーズ作り[Cheese]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
 
             <ultitle>チーズの種類</ultitle>
             <ul>
@@ -1097,8 +1995,8 @@
                 <li>ショーシャチーズ[Shosha]･･･ヤク (ウェット)</li>
                 <li>チェダーチーズ[Cheddar]･･･牛</li>
                 <li>ゴーダチーズ[Gouda]･･･牛 (ウェット)</li>
-                <li>シェーブルチーズ[Chevre]･･･ヤギ</li>    
-                <li>フェタチーズ[Feta]･･･ヤギ (ウェット)</li>        
+                <li>シェーブルチーズ[Chevre]･･･ヤギ</li>
+                <li>フェタチーズ[Feta]･･･ヤギ (ウェット)</li>
             </ul>
 
             <ultitle>必要素材:</ultitle>
@@ -1121,7 +2019,7 @@
                 <info>使用したチーズ用漉し布は再利用できない</info>
             </ul>
 
-            
+
             ホールチーズ[Cheese Wheel]はブロックで、保存期間を伸ばすために設置すべきです。
             品質をげるためにチーズセラー[Cellar]で保管して熟成すべきです。
             ホールチーズはナイフで右クリックをして切り分けて取得します。
@@ -1129,14 +2027,14 @@
 
             熟成段階:フレッシュ[Fresh]→熟成[Aged]→ビンテージ[Vintage]
         </div>
-        
+
 
         <div class="article" id="life_cellar">
-            <h2>貯蔵庫[Cellar]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>貯蔵庫[Cellar]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             貯蔵庫はチーズの熟成、食品棚やハンガーを使った食材の保管に使用します。
             0℃以下だと少し効率が良くなり、-12℃以下だとさらに効率がよくなります。<br>
-            
+
             <ultitle>必要素材:</ultitle>
             <ul>
                 <li>
@@ -1173,7 +2071,7 @@
                 </ul>
             </ul>
 
-        
+
 
 
 
@@ -1186,7 +2084,7 @@
                         <comment>
                             Food shelves can contain a full stack of one food item<br>
                             フルスタックって64個って意味？
-                        </comment>            
+                        </comment>
                     </info>
                     <ultitle>必要素材:</ultitle>
                     <ul>
@@ -1194,7 +2092,7 @@
                         <li>板材[Wood Lumber]</li>
                     </ul>
                 </li>
-                
+
                 <li>
                     ハンガー[Hanger]
                     <info>
@@ -1207,15 +2105,15 @@
                             <comment>画像ではYarnになってるから糸系なら大丈夫？</comment>
                         </ul>
                 </li>
-            
+
             </ul>
         </div>
 
 
 
         <div class="article" id="life_greenhouse">
-            <h2>温室[greenhouse]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>温室[greenhouse]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             温度管理装置[Climate Station]で管理するマルチブロック。
             作物を年中育てられる。
             貯蔵庫のように作りたい温室のブロックで囲むだけです。
@@ -1225,7 +2123,7 @@
 
             温室はブロックかパネルで作成する。
             <comment> except that slabs are always considered valid roof blocks.</comment>
-            
+
             <ul>
                 <li>プランター[Planter]</li>
                 <li>スプリンクラー[Sprinkler]</li>
@@ -1256,7 +2154,7 @@
             </ul>
 
             強化ガラス[Reinforced Glass]で以下の素材を作成できる。
-            <ul>            
+            <ul>
                 <li>温室のトラップドア[Greenhouse Trapdoor]</li>
                 <li>温室のパネル屋根[Greenhouse Panel Roof]</li>
                 <li>温室のパネル壁[Greenouse Panel Wall]</li>
@@ -1265,8 +2163,8 @@
             </ul>
 
             <div class="sub_article" id="life_irrigation">
-                <h2>潅水[Irrigation]の概要と必要素材</h2>       
-                <unchecked>未検証</unchecked> 
+                <h2>潅水[Irrigation]の概要と必要素材</h2>
+                <unchecked>未検証</unchecked>
 
                 <ul>
                     <li>
@@ -1311,10 +2209,10 @@
             </div>
 
 
-            
+
             <div class="sub_article" id="life_planter">
-                <h2>プランター[Planter]の概要と必要素材</h2>       
-                <unchecked>未検証</unchecked> 
+                <h2>プランター[Planter]の概要と必要素材</h2>
+                <unchecked>未検証</unchecked>
                 温室の中で使用し、作物を育てるために使用する。
 
                 プランターは基本的に以下の材料の組み合わせでクラフトされる。
@@ -1360,7 +2258,7 @@
                             米とクランベリーを育てることができる。
                             4連プランターと同じように使うことができるが、
                             水を供給するために直下にパイプを通す必要があります。
-                        </info>                    
+                        </info>
                     </li>
 
 
@@ -1369,7 +2267,7 @@
                         <info>
                             <uwavy>銅以上の温室でのみ使用可能</uwavy><br>
                             栽培できる作物:
-                        </info>                    
+                        </info>
                         <ul>
                             <li>インゲン豆[Green Beans]</li>
                             <li>トマト[Tomato]</li>
@@ -1387,7 +2285,7 @@
                             バナナ以外の果物の木育てられる。<br>
                             窒化物[Nitrogen]を栄養素として吸収する。
                         </info>
-                        
+
                     </li>
 
                     <li>
@@ -1397,7 +2295,7 @@
                             西洋かぼちゃ[Squash]とバナナの木を育てられる。<br>
                             ひっかけるための固形ブロックを上に配置する必要がある。
                         </info>
-                        
+
                     </li>
 
                     <li>
@@ -1408,18 +2306,13 @@
                             窒化物を栄養素として吸収する。<br>
                             格子プランターが上部に配置されており、その下が実のなったベリーの茂みの場合、
                             上側に伸びてくる可能性があります。
-                        </info>                    
+                        </info>
                     </li>
-                    
+
 
                 </ul>
-            </div>  
+            </div>
         </div>
-        
-
-
-
-        
 
 
 
@@ -1430,11 +2323,16 @@
 
 
 
-        
+
+
+
+
+
+
 
         <div class="article" id="life_jarbnet">
-            <h2>小物棚[Jarbnet]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>小物棚[Jarbnet]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
             ガラス瓶、ろうそく、水筒を置くための棚。
 
             <ul>
@@ -1442,21 +2340,59 @@
                 <li>板材</li>
                 <li>真鍮のロッド</li>
             </ul>
-        </div>  
-        
+        </div>
+
 
         <div class="article" id="not_defined">
-            <h2>[]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
+            <h2>[]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
         </div>
-        
-        <div class="article" id="not_defined">
-            <h2>[]の概要と必要素材</h2>       
-            <unchecked>未検証</unchecked> 
-        </div>
-        
 
-    
-        
+        <div class="article" id="ore_finder">
+            <h2>鉱石発見ツールv1</h2>
+            <div style="width: 1em; display: inline-block;">X:</div>
+            <input type="text" inputmode="decimal" id="finder_x_1">
+            ～ 
+            <input type="text" inputmode="decimal" id="finder_x_2">
+            >> <span id="finder_x_result">----</span>
+            <br>
+
+            <div style="width: 1em; display: inline-block;">Z:</div>
+            <input type="text" inputmode="decimal" id="finder_z_1">
+            ～ 
+            <input type="text" inputmode="decimal" id="finder_z_2">
+            >> <span id="finder_z_result">----</span>
+            <br>
+
+            <div style="width: 1em; display: inline-block;">Y:</div>
+            <input type="text" inputmode="decimal" id="finder_y_1">
+            ～ 
+            <input type="text" inputmode="decimal" id="finder_y_2">
+            >> <span id="finder_y_result">----</span>
+
+        </div>
+
+        <div class="spacer" style="margin-bottom: 20em;">
+            
+        </div>
+
+
     </body>
+
+    <script>
+        window.onload = () => {
+            this.oreFinder = new OreFinder();
+            this.oreTableManager = new OreTableManager(document.getElementById("ore_geology_table"), document.getElementById("ore_geology_filter_list"));
+            this.plantTableManager = new PlantTableManager(document.getElementById("plant_farming_table"), document.getElementById("plant_farming_filter_table"));
+            document.getElementById("finder_x_1").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
+            document.getElementById("finder_x_2").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
+            document.getElementById("finder_z_1").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
+            document.getElementById("finder_z_2").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
+            document.getElementById("finder_y_1").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
+            document.getElementById("finder_y_2").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
+            oreTableManager.setDataTo(oreTableManager.table, oreTableManager.rowHeaders, oreTableManager.data)
+        };
+
+      
+    </script>
 </html>

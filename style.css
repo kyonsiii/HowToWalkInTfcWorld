@@ -15,11 +15,125 @@ table{
     margin-left: 0;
 }
 
+table thead th{
+    text-align: left;
+}
+
 table td, table th{
     border: 1px solid black;   
     border-spacing: 0;
 }
 
+#plant_farming_filter_table td, #plant_farming_filter_table th{
+    border: none;   
+}
+
+.table-container {
+    width: 100%;
+    overflow: auto;
+    position: relative;
+}
+
+
+
+table.ore_geology{
+    table-layout: fixed;
+    width: 100%;
+    font-size: 0.5em;
+    word-wrap: break-word;
+}
+
+table.plant_farming{
+    width: 80%;
+    font-size: 0.8em;
+    word-wrap: break-word;
+}
+
+
+table.ore_geology th{
+    width: 3.3em;
+}
+
+table.plant_farming th{
+    width: "";
+}
+
+table.ore_geology td{
+    width: 3.3em;
+    height: 3.3em;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+}
+
+table.plant_farming td{
+    width: "";    
+}
+
+
+table.scroll_table th{
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background-color: #f2f2f2;
+}
+
+table.scroll_table th:first-child{
+    position: sticky;
+    left: 0;
+    z-index: 100;
+    background-color: #f2f2f2;
+    width: 80px;
+    max-width: 80px;
+}
+
+table.ore_geology th:nth-child(2){
+    position: sticky;
+    width: 60px;
+    max-width: 60px;;
+    left: 80px;
+    z-index: 99;
+}
+
+
+table.scroll_table tbody td:first-child{
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    background-color: #f2f2f2;
+}
+
+
+table.ore_geology td:nth-child(2){
+    width: 60px;
+    left: 80px;
+    position: sticky;
+    z-index: 4;
+    background-color: #f2f2f2;
+}
+
+
+#ore_mineral table.item_cat_etc td:nth-child(1),
+#stone_anvil_flux table td:nth-child(1){
+    width: 13em;
+    font-size: 0.75em;
+}
+
+
+#ore_mineral table.item_cat_etc td:nth-child(2){
+    font-size: 0.75em;
+    text-align: center;
+}
+
+#ore_mineral table.item_cat_etc td:nth-child(3),
+#stone_anvil_flux table td:nth-child(2){
+    font-size: 0.75em;
+}
+
+tr.boldLineTop{
+    border-top: 2px solid black;
+}
 ul{
     margin-top: 0;
 }
@@ -75,4 +189,8 @@ comment{
 ultitle{
     font-weight: 700;
     display: block;
+}
+
+#ore_finder input{
+    width: 3em;
 }
