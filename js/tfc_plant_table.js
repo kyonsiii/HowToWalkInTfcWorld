@@ -58,7 +58,6 @@ class PlantTableManager{
         });
 
         this.filterTable.querySelectorAll("input").forEach(box =>{
-            console.log(box);
             box.addEventListener("keyup", (e) => {
                 this.setDataTo(this.table, this.rowHeaders, this.getFilteredDataFromFilterTables());
             })
@@ -66,8 +65,6 @@ class PlantTableManager{
 
 
         this.setDataTo(this.table, this.rowHeaders, this.rowData);
-
-        console.log(this.getFilteredDataFromFilterTables());
     }
 
     getFilteredDataFromFilterTables(){
@@ -84,26 +81,35 @@ class PlantTableManager{
         if (signValue == "") return data;
 
 
-        let sign = signValue.substring(0, 1);
-        let value = signValue.substring(1).trim();
+        //let sign = signValue.substring(0, 1);
+        let sign  = signValue.substring(0, 1);
+        let value = (signValue.length == 1) ? signValue : signValue.substring(1).trim();
         let index = this.rowHeaders.indexOf(header);
+
+        if (/^-*[0-9]/.test(signValue)){
+            sign = ">";
+            value = signValue;
+        }
+
+        let filteredData;
 
         if (sign == ">"){
             let num = Number(value);
-            return data.filter(r => (r[index] != undefined) && Number(r[index]) > num);
+            filteredData = data.filter(r => (r[index] != undefined) && Number(r[index]) >= num);
         }
         else if (sign == "<"){
             let num = Number(value);
-            return data.filter(r => (r[index] != undefined) && Number(r[index]) < num);
+            filteredData = data.filter(r => (r[index] != undefined) && Number(r[index]) <= num);
         }
         else if (sign == "="){
-            return data.filter(r => (r[index] != undefined) && r[index] == value);
+            filteredData =  data.filter(r => (r[index] != undefined) && r[index] == value);
         }
         else{
-            console.log(signValue);
-            let reg = new RegExp(signValue);
-            return data.filter(r => reg.test(r[index]));
+            let reg = new RegExp(signValue, "i");
+            filteredData = data.filter(r => reg.test(r[index]));
         }
+
+        return filteredData.sort((a, b) => a[index] > b[index] ? -1 : 1);
     }
 
 

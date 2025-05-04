@@ -3,16 +3,340 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <link rel="icon" href="/favicon.png" type="image/png">
         <link href="style.css" rel="stylesheet" type="text/css">
         <script src="js/main.js"></script>
-        <script src="js/ore_finder.js"></script>
-        <script src="js/ore_table.js"></script>
-        <script src="js/plant_table.js"></script>
+        <script src="js/tfc_ore_finder.js"></script>
+        <script src="js/tfc_ore_table.js"></script>
+        <script src="js/tfc_plant_table.js"></script>
+        <script src="js/tfc_smith_item_container.js"></script>
+        <script src="js/tfc_smith.js"></script>
+        <script src="js/tfc_alloy.js"></script>
+        
+   
         <title>How To Walk In TFC World - Japanese</title>
     </head>
 
     <body>
+        <audio id="utility_timer_sound" src="sound\cuckoo4.mp3" preload="auto"></audio>
+        
+        <!-- スクロールしないヘッダー -->
+        <div id="utility_header" class="content-header">
+            <div class="header_block">
+                <span class="visible_switch" onclick="document.getElementById('utility_header').style.display='none';"> hide </span>
+            </div>
+            <div class="header_block">
+                <strong>タイマー</strong>
+                <div class="tfc_timer_block">
+                    <input type="text" class="tbox_header" placeholder="炭焼きなどのラベル">
+                    <input type="text" class="tbox_header" id="timer_time_1" placeholder="6:40">
+                    <button class="button_header">START</button>
+                </div>
+
+                <div class="tfc_timer_block">
+                    <input type="text" class="tbox_header" placeholder="塊鉄炉などのラベル">
+                    <input type="text" class="tbox_header" id="timer_time_2" placeholder="12:30">
+                    <button class="button_header">START</button>
+                </div>
+
+                <div class="tfc_timer_block">
+                    <input type="text" class="tbox_header" placeholder="ラベル">
+                    <input type="text" class="tbox_header" id="timer_time_3" placeholder="20:00">
+                    <button class="button_header">START</button>
+                </div>
+            </div>
+
+            <div class="header_block">
+                <strong>鉱石発見ツールv1</strong>
+                <div id="utility_ore_finder">
+                
+                    <div style="width: 1em; display: inline-block;">X:</div>
+                    <input type="text" inputmode="decimal" class="tbox_header" id="finder_x_1">
+                    ～ 
+                    <input type="text" inputmode="decimal" class="tbox_header" id="finder_x_2">
+                    >> <span id="finder_x_result">----</span>
+                    <br>
+        
+                    <div style="width: 1em; display: inline-block;">Z:</div>
+                    <input type="text" inputmode="decimal" class="tbox_header" id="finder_z_1">
+                    ～ 
+                    <input type="text" inputmode="decimal" class="tbox_header" id="finder_z_2">
+                    >> <span id="finder_z_result">----</span>
+                    <br>
+        
+                    <div style="width: 1em; display: inline-block;">Y:</div>
+                    <input type="text" inputmode="decimal" class="tbox_header" id="finder_y_1">
+                    ～ 
+                    <input type="text" inputmode="decimal" class="tbox_header" id="finder_y_2">
+                    >> <span id="finder_y_result">----</span>
+        
+                </div>    
+            </div>
+
+            <div class="header_block">
+                <strong>鍛冶補助ツールv1</strong>
+                <div id="utility_smithing">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>finishWith:</td>
+                                <td>
+                                    <input list="utility_smithing_finish_data" id="utility_smithing_finish_list" autocomplete="off" onfocus="this.value=''" onchange="document.getElementById('utility_smithing_target_value').focus();">
+                                    <input type="text" id="utility_smithing_target_value" style="width: 4em;" autocomplete="off">
+                                    <button class="button_header" onclick="tfcSmithing.calc();">calc</button>
+                                    <datalist id="utility_smithing_finish_data"></datalist>                                       
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>マイリスト:</td>
+                                <td>
+                                    <input list="utility_smithing_mylist_data" id="utility_smithing_mylist" style="width: 249px;" autocomplete="off" onfocus="this.value=''" onchange="navigator.clipboard.writeText(tfcSmithing.decompressShrinkStr(this.value)); document.getElementById('utility_smithing_target_value').focus();">
+                                    <button class="button_header" onclick="tfcSmithing.delete();">delete</button>
+                                    <datalist id="utility_smithing_mylist_data"></datalist>
+                                </td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="header_block">
+                 
+                 <div id="utility_alloy">
+                    <div class="alloy_composition_header">
+                        <div>
+                            <strong><span id="utility_alloy_show_hide_switch" onclick="tfcAlloy.showHideCompositions();">▼</span>合金補助ツールv1</strong>
+                            <select id="utility_alloy_list" onchange="tfcAlloy.setAlloyMaterials();">
+                                <option value="">【合金を選択】</option>
+                                <option value="Copper,50,65;Bismuth,10,20;Zinc,20,30">BismuthBronze</option>
+                                <option value="Copper,88,92;Tin,8,12">Bronze</option>                        
+                                <option value="Copper,50,70;Silver,10,25;Gold,10,25">BlackBronze</option>                        
+                                <option value="Copper,88,92;Zinc,8,12">Brass</option>                        
+                                <option value="Copper,20,40;Silver,60,80">SterlingSilver</option>                        
+                                <option value="Copper,15,30;Gold,70,85">RoseGold</option>                        
+                                <option value="Steel,50,70;Nickel,15,25;BlackBronze,15,25">BlackSteel</option>                        
+                                <option value="BlackSteel,50,55;Steel,20,25;BismuthBronze,10,15;SterlingSilver,10,15">BlueSteel</option>                        
+                                <option value="BlackSteel,50,55;Steel,20,25;Brass,10,15;RoseGold,10,15">RedSteel</option>                        
+                                <option value="Steel,60,80;Nickel,10,20;Chromium,20,30">StainlessSteel</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <span id="utility_alloy_total_unit"></span> Unit(Total)
+                        </div>
+                    </div>
+                    
+                  
+                    
+
+                    <!--材料1個目-->
+                    <div class="alloy_composition_container">
+                        <!--左ブロック(材料名・サイズ・個数)-->
+                        <div class="alloy_composition_left_block">
+                            <div class="alloy_cell alloy_cell_top" title="合金の材料名" style="justify-content: left;">
+                                <span class="alloy_composition_material_name"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="材料のサイズ">
+                                <select class="alloy_composition_matsize_list"></select>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="材料の数量">
+                                <select class="alloy_composition_matnum_list"></select>
+                            </div>
+                        </div>
+
+                        <!--中ブロック(比率範囲・手入力補正値・小計)-->
+                        <div class="alloy_composition_center_block">      
+                            <div class="alloy_cell alloy_cell_top" style="justify-content: center;" title="材料の比率の範囲" style="justify-content: center;">
+                                <span class="alloy_composition_ratio_range"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="補正値(手動入力)">
+                                <input type="text" class="alloy_composition_additional" autocomplete="off">
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="Unit小計">
+                                <span class="alloy_composition_subtotal">----</span>
+                            </div>                      
+                        </div>
+
+                        <!--右ブロック(投入目安量・現在の比率・判定結果)-->
+                        <div class="alloy_composition_right_block">   
+                            <div class="alloy_cell alloy_cell_top" style="justify-content: center;" title="投入目安量" style="justify-content: center;">
+                                <span class="alloy_composition_recommend_num"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="材料の現在の比率">
+                                <span class="alloy_composition_current_ratio">----</span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="判定結果">
+                                <span class="alloy_composition_current_check">----</span>
+                            </div>                  
+                        </div>
+                    </div>
+
+                    <!--材料2個目-->
+                    <div class="alloy_composition_container">
+                        <!--左ブロック(材料名・サイズ・個数)-->
+                        <div class="alloy_composition_left_block">
+                            <div class="alloy_cell alloy_cell_top" title="合金の材料名" style="justify-content: left;">
+                                <span class="alloy_composition_material_name"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="材料のサイズ">
+                                <select class="alloy_composition_matsize_list"></select>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="材料の数量">
+                                <select class="alloy_composition_matnum_list"></select>
+                            </div>
+                        </div>
+
+                        <!--中ブロック(比率範囲・手入力補正値・小計)-->
+                        <div class="alloy_composition_center_block">      
+                            <div class="alloy_cell alloy_cell_top" style="justify-content: center;" title="材料の比率の範囲" style="justify-content: center;">
+                                <span class="alloy_composition_ratio_range"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="補正値(手動入力)">
+                                <input type="text" class="alloy_composition_additional" autocomplete="off">
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="Unit小計">
+                                <span class="alloy_composition_subtotal">----</span>
+                            </div>                      
+                        </div>
+
+                        <!--右ブロック(投入目安量・現在の比率・判定結果)-->
+                        <div class="alloy_composition_right_block">   
+                            <div class="alloy_cell alloy_cell_top" style="justify-content: center;" title="投入目安量" style="justify-content: center;">
+                                <span class="alloy_composition_recommend_num"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="材料の現在の比率">
+                                <span class="alloy_composition_current_ratio">----</span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="判定結果">
+                                <span class="alloy_composition_current_check">----</span>
+                            </div>                  
+                        </div>
+                    </div>
+
+                    <!--材料3個目-->
+                    <div class="alloy_composition_container">
+                        <!--左ブロック(材料名・サイズ・個数)-->
+                        <div class="alloy_composition_left_block">
+                            <div class="alloy_cell alloy_cell_top" title="合金の材料名" style="justify-content: left;">
+                                <span class="alloy_composition_material_name"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="材料のサイズ">
+                                <select class="alloy_composition_matsize_list"></select>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="材料の数量">
+                                <select class="alloy_composition_matnum_list"></select>
+                            </div>
+                        </div>
+
+                        <!--中ブロック(比率範囲・手入力補正値・小計)-->
+                        <div class="alloy_composition_center_block">      
+                            <div class="alloy_cell alloy_cell_top" style="justify-content: center;" title="材料の比率の範囲" style="justify-content: center;">
+                                <span class="alloy_composition_ratio_range"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="補正値(手動入力)">
+                                <input type="text" class="alloy_composition_additional" autocomplete="off">
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="Unit小計">
+                                <span class="alloy_composition_subtotal">----</span>
+                            </div>                      
+                        </div>
+
+                        <!--右ブロック(投入目安量・現在の比率・判定結果)-->
+                        <div class="alloy_composition_right_block">   
+                            <div class="alloy_cell alloy_cell_top" style="justify-content: center;" title="投入目安量" style="justify-content: center;">
+                                <span class="alloy_composition_recommend_num"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="材料の現在の比率">
+                                <span class="alloy_composition_current_ratio">----</span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="判定結果">
+                                <span class="alloy_composition_current_check">----</span>
+                            </div>                  
+                        </div>
+                    </div>
+
+                    <!--材料4個目-->
+                    <div class="alloy_composition_container">
+                        <!--左ブロック(材料名・サイズ・個数)-->
+                        <div class="alloy_composition_left_block">
+                            <div class="alloy_cell alloy_cell_top" title="合金の材料名" style="justify-content: left;">
+                                <span class="alloy_composition_material_name"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="材料のサイズ">
+                                <select class="alloy_composition_matsize_list"></select>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="材料の数量">
+                                <select class="alloy_composition_matnum_list"></select>
+                            </div>
+                        </div>
+
+                        <!--中ブロック(比率範囲・手入力補正値・小計)-->
+                        <div class="alloy_composition_center_block">      
+                            <div class="alloy_cell alloy_cell_top" style="justify-content: center;" title="材料の比率の範囲" style="justify-content: center;">
+                                <span class="alloy_composition_ratio_range"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="補正値(手動入力)">
+                                <input type="text" class="alloy_composition_additional" autocomplete="off">
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="Unit小計">
+                                <span class="alloy_composition_subtotal">----</span>
+                            </div>                      
+                        </div>
+
+                        <!--右ブロック(投入目安量・現在の比率・判定結果)-->
+                        <div class="alloy_composition_right_block">   
+                            <div class="alloy_cell alloy_cell_top" style="justify-content: center;" title="投入目安量" style="justify-content: center;">
+                                <span class="alloy_composition_recommend_num"></span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_left" title="材料の現在の比率">
+                                <span class="alloy_composition_current_ratio">----</span>
+                            </div>
+
+                            <div class="alloy_cell alloy_cell_bottom_right" title="判定結果">
+                                <span class="alloy_composition_current_check">----</span>
+                            </div>                  
+                        </div>
+                    </div>
+                 </div>
+
+
+
+
+                 
+            </div>           
+        </div>
+
+
+        <div class="content-header hidden_mode">
+            <div class="header_block">
+                <span class="visible_switch" onclick="document.getElementById('utility_header').style.display='';"> show </span>
+            </div>
+        </div>
+
+
         <h1>むちゃくちゃ基礎</h1>
         <div class="article" id="size_weight">
             <h2>大きさ[Size]と重さ[Weight]の概要</h2>
@@ -72,7 +396,7 @@
                         <td>Huge</td>
                         <td>
                             容器には入れられない。<br>
-                            インベントリに存在すると過積載状態(overburdening)になる。<br>
+                            インベントリに存在すると過積載状態[Overburdening]になる。<br>
                             (空腹状態になりやすくなる)。
                         </td>
                     </tr>
@@ -82,7 +406,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>重さ(Weight)</th>
+                        <th>重さ[Weight]</th>
                         <th>スタック数</th>
                     </tr>
                 </thead>
@@ -115,7 +439,7 @@
                 </tbody>
             </table>
 
-            金床(Anvil)、密封した樽(Sealed Barrel)、中身の入っているるつぼ(Crucible)を持つと過積載状態(overburdening)になる。<br>
+            金床[Anvil]、密封した樽[Sealed Barrel]、中身の入っているるつぼ[Crucible]を持つと過積載状態[Overburdening]になる。<br>
             HugeかつVery Heavyのアイテムを2つ以上持つと動きが極端に遅くなる。<br>
             馬にも過積載状態はあるので注意。
         </div>
@@ -133,7 +457,7 @@
         </div>
 
         <div class="article" id="geology">
-            <h2>地質・地層[geology]</h2>
+            <h2>地質・地層[Geology]</h2>
             地質には大きく分けて4種類存在し、それぞれ含む鉱物が異なる。
             <table>
                 <thead>
@@ -149,7 +473,7 @@
                         <td>Shale, Claystone, Limestone, Conglomerate, Dolomite, Chert, Chalk</td>
                     </tr>
                     <tr>
-                        <td>変成岩層[Metamoriphic]</td>
+                        <td>変成岩層[Metamorphic]</td>
                         <td>Quartzite, Slate, Phyllite, Schist, Gneiss, Marble</td>
                     </tr>
                     <tr>
@@ -189,7 +513,7 @@
                         <td>Diorite</td>
                     </tr>
                     <tr>
-                        <td>苦鉄質岩(Mafic)</td>
+                        <td>苦鉄質岩[Mafic]</td>
                         <td>Basalt</td>
                         <td>Gabbro</td>
                     </tr>
@@ -245,7 +569,7 @@
                     </tr>
                     <tr>
                         <td>Schist</td>
-                        <td>Phylliteか深成岩[Igneous Intrusive]</tr>
+                        <td>Phylliteか深成岩[Igneous Intrusive]</td>
                     </tr>
                     <tr>
                         <td>Gneiss</td>
@@ -500,17 +824,26 @@
                     <tr>
                         <td>Filter1</td>
                         <td><select></select></td>
-                        <td><input type="text" value="^[^F]"> </td>
+                        <td>
+                            <input type="text" value="^[^F]">
+                             : 正規表現でフィルター
+                        </td>
                     </tr>
                     <tr>
                         <td>Filter2</td>
                         <td><select></select></td>
-                        <td><input type="text" value=""> </td>
+                        <td>
+                            <input type="text" value="">
+                            : = &gt; &lt;が使用可能。 以上/以下で判定
+                         </td>
                     </tr>
                     <tr>
                         <td>Filter3</td>
                         <td><select></select></td>
-                        <td><input type="text"> </td>
+                        <td>
+                            <input type="text">
+                             : 数値のみの場合は&gt;で判定
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -585,7 +918,6 @@
 
         <div class="article" id="panning">
             <h2>砂金取り[panning]の概要と必要素材</h2>
-            <unchecked>未検証</unchecked>
             <ultitle>必要素材:</ultitle>
             <ul>
                 <li>陶器のパン[Ceramic Pan]</li>
@@ -614,7 +946,6 @@
 
         <div class="article" id="prospecting">
             <h2>鉱山調査[Prospecting]の概要と必要素材</h2>
-            <unchecked>未検証</unchecked>
             地表に鉱物の小片が落ちているとその下に鉱山が存在する。
 
             <ul>
@@ -642,7 +973,7 @@
         </div>
 
         <div class="article" id="sald">
-            <h2>サラダ[salad]の概要と必要素材</h2>
+            <h2>サラダ[Salad]の概要と必要素材</h2>
             <unchecked>未検証</unchecked>
             <ultitle>必要素材:</ultitle>
             <ul>
@@ -732,7 +1063,6 @@
 
         <div class="article" id="glass_working">
             <h2>ガラス細工[Glass working]の概要と必要素材</h2>
-            <unchecked>未検証</unchecked>
             ガラス細工ではガラス瓶などが製作できます。
             <ul>
                 <li>
@@ -760,7 +1090,7 @@
                     <ul>
                         <li>真鍮のロッド[Brass Rod]</li>
                         <info>あるいは、</info>
-                        <li>粘土(Clay)</li>
+                        <li>粘土[Clay]</li>
                     </ul>
                 </li>
 
@@ -792,7 +1122,7 @@
                     木ごて[Paddle](叩き工程[Flatten]で使用)
                     <info>以下の材料で製作</info>
                     <ul>
-                        <li>板材(Lumber)</li>
+                        <li>板材[Lumber]</li>
                     </ul>
                 </li>
 
@@ -1474,7 +1804,7 @@
                 <li>
                     温室[Greenhouse]の追加
                     <info>
-                        <a href="#life_greenhouse">→温室[greenhouse]の概要と必要素材</a>
+                        <a href="#life_greenhouse">→温室[Greenhouse]の概要と必要素材</a>
                     </info>
                 </li>
 
@@ -1558,7 +1888,6 @@
                 <li>
                     ハーブ・スパイスの追加
                     <info>
-                        <unchecked>未検証</unchecked>
                         小さい植物を自分で集めることもできますが、シードボール[Seed Ball]を作り、その辺に撒くとより簡単に取得できます。
                         撒くとちょうちょエリア?[Butterfly Grass]ができ、だんだんと育っていきます。
                         成熟した時に周りのブロックに伝播していったり、変化したりします？
@@ -1895,7 +2224,7 @@
                     <li>ホッパー</li>
                 </ul>
 
-                unchecked>未検証</unchecked>
+                <unchecked>未検証</unchecked>
                 <h3>充填マシン？[Jarring Station]</h3>
                 寸胴鍋から瓶詰するのに使う。側面に注ぎ口がある。
                 寸胴鍋を使い砂糖水を作り、果物を足すと果物の液体[Fruity Fruid]になる。
@@ -1915,7 +2244,6 @@
 
         <div class="article" id="life_beekeeping">
             <h2>養蜂[Beekeeping]の概要と必要素材</h2>
-            <unchecked>未検証</unchecked>
             巣箱を設置して養蜂を行う。<br>
             <uwavy>巣箱設置後、巣枠を最大4つ配置することを忘れないこと！！</uwavy><br>
             ちょうちょエリア?[Butterfly Grass]ではなかなか女王バチが来なかったので、自分で花を植えたら割とすぐに来た。<br>
@@ -2112,7 +2440,7 @@
 
 
         <div class="article" id="life_greenhouse">
-            <h2>温室[greenhouse]の概要と必要素材</h2>
+            <h2>温室[Greenhouse]の概要と必要素材</h2>
             <unchecked>未検証</unchecked>
             温度管理装置[Climate Station]で管理するマルチブロック。
             作物を年中育てられる。
@@ -2348,42 +2676,25 @@
             <unchecked>未検証</unchecked>
         </div>
 
-        <div class="article" id="ore_finder">
-            <h2>鉱石発見ツールv1</h2>
-            <div style="width: 1em; display: inline-block;">X:</div>
-            <input type="text" inputmode="decimal" id="finder_x_1">
-            ～ 
-            <input type="text" inputmode="decimal" id="finder_x_2">
-            >> <span id="finder_x_result">----</span>
-            <br>
-
-            <div style="width: 1em; display: inline-block;">Z:</div>
-            <input type="text" inputmode="decimal" id="finder_z_1">
-            ～ 
-            <input type="text" inputmode="decimal" id="finder_z_2">
-            >> <span id="finder_z_result">----</span>
-            <br>
-
-            <div style="width: 1em; display: inline-block;">Y:</div>
-            <input type="text" inputmode="decimal" id="finder_y_1">
-            ～ 
-            <input type="text" inputmode="decimal" id="finder_y_2">
-            >> <span id="finder_y_result">----</span>
-
+        <div class="article" id="utility_">
+            <h2>[]の概要と必要素材</h2>
+            <unchecked>未検証</unchecked>
         </div>
+
 
         <div class="spacer" style="margin-bottom: 20em;">
-            
+                
         </div>
-
-
     </body>
 
     <script>
         window.onload = () => {
             this.oreFinder = new OreFinder();
+            this.tfcTimerModule = new TfcTimerModule();
             this.oreTableManager = new OreTableManager(document.getElementById("ore_geology_table"), document.getElementById("ore_geology_filter_list"));
             this.plantTableManager = new PlantTableManager(document.getElementById("plant_farming_table"), document.getElementById("plant_farming_filter_table"));
+            this.tfcSmithing = new TfcSmithing();
+            this.tfcAlloy = new TfcAlloy();
             document.getElementById("finder_x_1").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
             document.getElementById("finder_x_2").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
             document.getElementById("finder_z_1").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
@@ -2391,6 +2702,8 @@
             document.getElementById("finder_y_1").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
             document.getElementById("finder_y_2").addEventListener("input", function(e){oreFinder.showFinderResultXYZ(this)}, false);
             oreTableManager.setDataTo(oreTableManager.table, oreTableManager.rowHeaders, oreTableManager.data)
+            this.tfcSmithing.initializeMyList();
+            this.tfcAlloy.initialize();
         };
 
       
