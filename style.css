@@ -68,7 +68,7 @@ width: 3.5em;;
 }
 
 .article{
-
+    scroll-margin-top: 100px;
     background-color: aliceblue;
     width: 780px;
 }
