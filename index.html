@@ -24,6 +24,10 @@
         <div id="utility_header" class="content-header">
             <div class="header_block">
                 <span class="visible_switch" onclick="document.getElementById('utility_header').style.display='none';"> hide </span>
+                <ul>
+                    <li><a href="#ore_mineral">鉱物</a></li>
+                    <li><a href="#wild_crop">植物</a></li>
+                </ul>
             </div>
             <div class="header_block">
                 <strong>タイマー</strong>
@@ -329,7 +333,6 @@
             </div>           
         </div>
 
-
         <div class="content-header hidden_mode">
             <div class="header_block">
                 <span class="visible_switch" onclick="document.getElementById('utility_header').style.display='';"> show </span>
@@ -338,6 +341,312 @@
 
 
         <h1>むちゃくちゃ基礎</h1>
+        <div class="article">
+            <h2>チュートリアル</h2>
+            <strong>石器時代の序盤</strong>
+            <ul class="weak">
+                <li>
+                    小石を拾う(どの岩でもOK)
+                    <info>(堆積岩・火山岩などで耐久が変わる)</info>                          
+                </li>
+                <li>
+                    金属の小片[Metal Nugget]を拾う
+                    <info>
+                        <a href="#geology">地面を構成する地質</a>によって生成される金属が決まる。
+                        <a href="#prospecting">足元の一定の深さまでに存在する鉱物</a>が地表に小片となって落ちている。
+                        以下のいずれかの合金を目指し確保しておくこと。（鉄などは拾わずに放置しておいたほうが後々役立つ）
+                    </info>
+                    <ul>
+                        <li>蒼青銅[Bismuth Bronze]・・・銅[Copper]、蒼鉛[Bismuth]、亜鉛[Zinc]の合金</li>
+                        <li>青銅[Bronze]・・・銅、錫[Tin]の合金</li> 
+                        <li>黒青銅[Black Bronze]・・・銅、金[Gold]、銀[Silver]の合金</li> 
+                        <info>
+                            錫・金・銀がある地層は意外と探すのが大変なので蒼青銅を目指すのが一般的
+                        </info>
+                    </ul>
+                </li>
+                        
+                <li>
+                    枝を拾う(どの木でもOK)
+                    <ul>
+                        <li>石のオノ…丸太の入手</li>
+                        <li>石のシャベル…粘土の入手</li>
+                        <li>石のナイフ…藁の入手(草をナイフで破壊して入手)</li>
+                    </ul>
+                </li>                        
+              
+
+                <li>
+                    粘土を掘る
+                    <info>(特徴的な草(キリン草、？？？)の下に生える)</info>
+                    <ul>
+                        <li>小さなツボ</li>
+                        <li>大きなツボ</li>
+                        <info>大きなツボに蓋をして運ぶと体力の消費が激しいので使わない選択肢もある</info>
+                        <info>粘土ブロックにしてもさほど効率はよくないのでそのまま1～2スタック運ぶ</info>                            
+                    </ul>
+                </li>
+                
+                
+                
+                <li>
+                    食料確保
+                    <info>
+                        野菜・動物・魚などから食材を確保する。果物は特定の季節にしか実らない。
+                        食べ物には腐敗度が設定されており、腐敗が早いものと遅いものがある。
+                    </info>
+                    <ul>
+                        <li>空腹ゲージがなくなると体力が減るようになる</li>
+                        <li>
+                            水分ゲージがなくなると走れなくなる
+                            <ul>
+                                <li>海水を飲むと渇き状態[Thirsty]になりむしろ水分ゲージの減りが早くなる</li>
+                                <li>トマト・果物など一部の食べ物は水分ゲージも一緒に回復する</li>
+                            </ul>
+                        </li>
+                        <li>
+                            栄養素の摂取量で体力が決まる
+                            <ul>
+                                <li>穀物[Grain]</li>
+                                <li>果物[Fruit]</li>
+                                <li>野菜[Vegetable]</li>
+                                <li>肉類[Protein]</li>
+                                <li>乳製品[Dairy]</li>
+                            </ul>
+                            <info>同じ食べ物を連続して食べても栄養素が増えないとどっかで見たような・・・</info>
+                            <info>
+                                ↑たぶん、これは乳製品の説明。食べ物→牛乳→食べ物...と交互にしないと栄養にならないらしい。
+                                <info>
+                                    However, it only adds to nutrition when drank after eating a food. Practically, this means that drinking milk twice in a row is ineffectual. A meal must precede it.
+                                </info>
+                            </info>
+                        </li>
+                        <li>満腹度[Saturation]も存在する</li>
+                        <li>小さなツボで保管することで少し腐敗を遅らせることができる</li>                       
+                    </ul>
+                    <info>ついでに暑さに強い(MAX35℃以上)穀物・植物の種をそれぞれ1～2種類確保しておく。<a href="#wild_crop">→植物のデータ</a></info>
+                    <info></info>
+                    <info>なお、植物の成長は時間かかるので最序盤育てないほうがよい</info>
+                    <info>(カオリン粘土を求めて赤道付近へ大移動する方が効率的)</info>
+                </li>
+                
+
+                <li>
+                    たき火[Firepit]で松明[Torch]と焼き料理を作る
+                    <ul>
+                        <li>火きり棒[Firestarter]…棒2個でクラフト</li>
+                        <li>棒3個</li>
+                        <li>丸太1個</li>
+                        <li>
+                            焚き付け[Kindling]
+                            <info>5つまで使用でき、1個につき10%成功率が上がる</info>
+                            <ul>
+                                <li>紙製品[Paper Product]</li>
+                                <li>藁[Straw]</li>
+                                <li>松ぼっくり[Pinecone]</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <info><strong>たき火の作り方</strong></info>
+                    <ul class="number">
+                        <li>棒3個、丸太1個、必要に応じて焚き付けを地面の同じ場所に投げ捨てる</li>
+                        <li>火きり棒を持ちShiftを押しながら？右クリックを長押しする</li>
+                        <li>成功すると火が出て専用UIが開けるようになる</li>
+                        <info>雨が当たっているところではなかなか火が起こせない</info>
+                        <li>左上のスロットには丸太を4個まで置ける</li>
+                        <info>泥炭[Peat]も使用できる<info>水辺に固まって見つかることがある（雨量が多い場所にしか存在しない？）</info></info>
+                        <li>真ん中上のスロットに焼きたいものを置く</li>
+                        <li>一定の温度に達するとその下のスロットに焼けたものが吐き出される</li>
+                        <info>棒を焼くと松明ができる</info>
+                        <info>生の肉・魚・ジャガイモなどを焼くと栄養素が増える</info>
+                    </ul>
+                </li>
+                        
+            </ul>
+
+            <strong>石器時代</strong>
+            <ul></ul>
+
+            <strong>銅器・銅合金時代</strong>
+            <ul></ul>
+
+            <strong>錬鉄時代</strong>
+            <ul>
+                <li>
+                    高炉[Blast Furnace]を構築する
+                    <ul>
+                        <li>
+                            耐火レンガブロック
+                            <ul>
+                                <li>カオリン粉</li>
+                                <li>モルタル[]</li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                </li> 
+            </ul>
+              
+
+                <strong>鋼鉄時代</strong>
+                <ul></ul>
+
+
+                <strong>レッドスティール・ブルースティール</strong>
+                <ul></ul>
+
+
+        </div>
+
+        <div class="article" id="alloy">
+            <h2>合金の概要</h2>
+            TFCでは金属を溶かして合金を作ることができる。
+            金属を含む鉱石のほか、ツール（消耗していても可）なども合金の材料にできる。
+            大きさによっては溶かす容器に入れられないので注意。
+
+            <strong>合金の作成方法</strong>
+            <ul>
+                <li>窯焼き</li>
+                <info>
+                    小さなツボに金属を入れ、窯焼きして合金を作る<br>
+                    金属により融点が決まっており、冷えると固まり取り出せなくなる。
+                </info>
+                <li>るつぼ[Crucible]</li>
+                <info>
+                    専用UIで合金を作る。<br>
+                    合金を材料にした合金の場合、一度合金として取り出してから再び溶かす必要がある。
+                    <info>
+                        例: 黒鋼は鋼鉄、ニッケル、黒青銅で作成するが、
+                        銅、金、銀を溶かし黒青銅の割合になった金属に鋼鉄とニッケルを混ぜても失敗する。
+                    </info>
+                </info>
+            </ul>
+
+            <strong>合金の成分構成</strong>
+            <table>
+                <thead>
+                    <tr>
+                        <th>合金名</th>
+                        <th>材料</th>
+                        <th>割合</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>蒼青銅[Bismuth Bronze]</td>
+                        <td>
+                            Copper<br>
+                            Bismuth<br>
+                            Zinc
+                        </td>
+                        <td>
+                            50 ～ 65%<br>
+                            10 ～ 20%<br>
+                            20 ～ 30%
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>青銅[Bronze]</td>
+                        <td>
+                            Copper<br>
+                            Tin
+                        </td>
+               
+                        <td>
+                            88% ～ 92%<br>
+                            8% ～ 12%
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>黒青銅[Black Bronze]</td>
+                        <td>
+                            Copper<br>
+                            Silver<br>
+                            Gold
+                        </td>
+                        <td>
+                            50% ～ 70%<br>
+                            10% ～ 25%<br>
+                            10% ～ 25%                            
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>[]</td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>[]</td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>[]</td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>[]</td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>[]</td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>[]</td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>[]</td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
         <div class="article" id="size_weight">
             <h2>大きさ[Size]と重さ[Weight]の概要</h2>
             TFCの世界ではアイテムに大きさと重さが設定されている。
@@ -445,6 +754,156 @@
         </div>
 
 
+        <div class="article" id="knapping">
+            <h2>石器製作[Knapping]</h2>
+            小石[Rock]を2つ以上持っている状態で右クリックすると専用のUIが開き石器製作ができる。<br>
+            石器製作と関係ないが、小石は右クリックで地面に設置でき、3つまで重ねることができる。<br>
+    
+            <div class="flex_area">
+                <div class="img_cell_container">
+                    <img class = "craft_ui" src="img/knapping/knife.png">
+                    <info>ナイフ[Knife]</info>
+                    <info>草から藁を入手。穀物からもみ殻を取る。</info>
+                </div>
+               
+                <div class="img_cell_container">
+                    <img class = "craft_ui" src="img/knapping/axe.png">
+                    <info>オノ[Axe]</info>
+                    <info></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class = "craft_ui" src="img/knapping/shovel.png">
+                    <info>シャベル[Shovel]</info>
+                    <info></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class = "craft_ui" src="img/knapping/hammer.png">
+                    <info>ハンマー[Hammer]</info>
+                    <info>石ブロックを石の金床にする</info>
+                </div>
+                <div class="img_cell_container">
+                    <img class = "craft_ui" src="img/knapping/hoe.png">
+                    <info>クワ[Hoe]</info>
+                    <info>耕した土の状態がわかる。</info>
+                </div>
+                <div class="img_cell_container">
+                    <img class = "craft_ui" src="img/knapping/javelin.png">
+                    <info>ジャベリン[Javelin]</info>
+                    <info>投げられる</info>
+                </div>      
+            </div>
+        </div>
+
+
+        <div class="article" id="pottary">
+            <h2>陶器[Pottary]の概要と必要素材</h2>
+            粘土[Clay]を使用し、陶器を作ることができる。<br>
+            粘土は雨量175mm以上のあらゆるところで固まって存在し、粘土の上には特定の植物が生えている。<br>
+            (Antyrium Fern, Canna, Goldenrod, Pampas Grass, Perovskia, WaterCannna)<br>
+            
+            <h3>陶芸</h3>
+            粘土を5つ持ち石器製作のように右クリックをして専用UIを開き、粘土の形をつくる。
+
+
+            <div class="flex_area">
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/small_vessel.png">
+                    <info>小さなツボ[Small Vessel]</info>
+                    <info>小さなものを4スタック</info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/large_vessel.png">
+                    <info>大きなツボ[Large Vessel]</info>
+                    <info>設置して使用。9スタック。蓋をして持ち運べる。</info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/ceramic_jug.png">
+                    <info>陶器の水筒[Ceramic Jug]</info>
+                    <info>水を100mb汲み持ち運べる。</info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/ceramic_pot.png">
+                    <info>陶器の鍋[Ceramic Pot]</info>
+                    <info><a href="#fire_pit">専用UIで鍋料理を行う</a></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_ingot.png">
+                    <info>インゴット鋳型[Ingot Mold]</info>
+                    <info>溶けた金属を流し込みインゴットを作る</info>
+                </div>
+
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_chisel.png">
+                    <info>ノミの鋳型</info>
+                    <info></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_axe.png">
+                    <info>オノの鋳型</info>
+                    <info></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_hammer.png">
+                    <info>ハンマーの鋳型</info>
+                    <info></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_hoe.png">
+                    <info>クワの鋳型</info>
+                    <info></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_knife.png">
+                    <info>ナイフの鋳型</info>
+                    <info></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_pickaxe.png">
+                    <info>ツルハシの鋳型</info>
+                    <info></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_prospectorspick.png">
+                    <info>探鉱槌の鋳型</info>
+                    <info><a href="#prospecting">鉱脈調査</a></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_saw.png">
+                    <info>ノコギリの鋳型</info>
+                    <info></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_scythe.png">
+                    <info>カマの鋳型</info>
+                    <info></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/mold_shovel.png">
+                    <info>シャベルの鋳型</info>
+                    <info></info>
+                </div>
+
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/spindle.png">
+                    <info>陶器の紡錘</info>
+                    <info><a href="#weaving">紡績に使用</a></info>
+                </div>
+                <div class="img_cell_container">
+                    <img class="craft_ui" src="img/pottery/blowpipe.png">
+                    <info>陶器の吹き竿</info>
+                    <info><a href="#glass_working">ガラス細工に使用</a></info>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="article" id="fire_pit">
+            <h2>たき火[Fire Pit]の概要と必要素材</h2>
+
+            <h3>鍋料理</h3>
+        </div>
+
+        
 
         <div class="article" id="vessel">
             <h2>小さい壺[Small Vessel]の概要と必要素材</h2>
@@ -857,7 +1316,74 @@
         </div>
 
 
+        <div class="article" id="barrel">
+            <h2>タル[Barrel]の概要と必要素材</h2>
+            液体を8000mb保持する。中央のスロットにはアイテムを置ける。
+            左上のスロットにバケツや水筒を置いて水を補充することもできる。
+            空の容器を置けば逆に水を入れることもできる。<br>
+            バケツなどで直接タルに右クリックしても同じことができる。
+            <br>
+            <br>
+            タルは蓋をすることができ、蓋をした状態だと液体が入ったまま持ち運ぶことができる。
+            また、タルに蓋をした状態で作成できるアイテムもある。
+            シフトを押しながらタルに右クリックすることでも蓋をすることができる。
 
+            <ul class="weak">
+                <li>空のバケツで川・池・海などの水源をクリックして液体を入れられる</li>
+                <li>蓋を開けたタルは雨・溶け始めているつららで少しずつ水がたまる</li>
+                <li>蓋を占めるときに中央のスロット以外に存在するアイテムを吐き出す</li>
+            </ul>
+            
+            <ultitle>真水[Water]で作るアイテム:</ultitle>
+            <ul>
+                <li>
+                    石灰水[Slaked Lime]… 溶剤[Flux] 000mb/個
+                    <info>革・モルタルなどの作成に使用</info>
+                </li>
+                <li>
+                    タンニン[Tannin]… 特定の原木[xxx Log] 1000mb/個                  
+                    <ul>
+                        <li>Oak</li>
+                        <li>Squoia</li>
+                        <li>Birch</li>
+                        <li>Chestnut</li>
+                        <li>Douglas Fir</li>
+                        <li>Hickory</li>
+                        <li>Maple</li>
+                    </ul>                    
+                </li>
+
+                <li>
+                    酒[Alcohol drink]… 特定の穀物[Grains] 500mb/個
+                    <info>入れる材料によって完成品が変わる</info>
+                    <ul>
+                        <!--羅刹-->
+                        <li>ビール[Beer] … 小麦[Wheat]</li>
+                    </ul>
+                </li>
+
+                <li>
+                    酢[Vinegar]…果物[Fluits] 500mb/個                    
+                </li>
+
+                <li>
+                    麻の糸[Jute Fiber]… 黄麻[Jute]
+                    <info>
+                        麻の布を作れるが使い道はない
+                    </info>
+                </li>
+
+                <li>
+                    砂糖[Sugar]… サトウキビ[Sugar Cane]
+                </li>
+            </ul>
+
+            <ultitle>石灰水で作るアイテム</ultitle>
+            <ul>
+                <!--羅刹-->
+                <li>モルタル[Mortar]… 砂[Sand]</li>
+            </ul>
+        </div>
 
         <div class="article" id="fire_clay">
             <h2>耐火粘土[Fire Clay]の概要と必要素材</h2>
@@ -945,8 +1471,8 @@
         </div>
 
         <div class="article" id="prospecting">
-            <h2>鉱山調査[Prospecting]の概要と必要素材</h2>
-            地表に鉱物の小片が落ちているとその下に鉱山が存在する。
+            <h2>鉱脈調査[Prospecting]の概要と必要素材</h2>
+            地表に鉱物の小片が落ちているとその下に鉱脈が存在する。
 
             <ul>
                 <li>水平方向に15ブロック以内</li>
@@ -1414,21 +1940,9 @@
             革の作成に必要な素材:
             <ul>
                 <li>石灰水[Lime Water]の樽</li>
-                <info>樽に水とフラックス[Flux]を入れたらすぐにできる</info>
+                <info>樽に水と溶剤[Flux]を入れたらすぐにできる</info>
                 <li>水の樽</li>
                 <li>タンニン[Tannin]の樽</li>
-                <info>
-                    特定のの原木をタルに入れて制作 1000mb/個
-                <ul>
-                    <li>Oak</li>
-                    <li>Squoia</li>
-                    <li>Birch</li>
-                    <li>Chestnut</li>
-                    <li>Douglas Fir</li>
-                    <li>Hickory</li>
-                    <li>Maple</li>
-                </ul>
-                </info>
                 <li>皮[Small/Medium/Large Raw Hide]</li>
             </ul>
 
