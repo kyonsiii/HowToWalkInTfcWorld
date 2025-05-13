@@ -31,7 +31,7 @@ class TfcAlloy{
 
     showHideCompositions(){
         let el = document.getElementById("utility_alloy_show_hide_switch");
-        console.log(el.textContent.substring(0, 1));
+        //console.log(el.textContent.substring(0, 1));
         el.textContent = (el.textContent.substring(0, 1) == "▼") ? el.textContent.replace("▼","▲") : el.textContent.replace("▲", "▼");
         this.alloyCompositions.forEach(c => c.element.style.display = (c.element.style.display != "none") ? "none" : "" );
     }
