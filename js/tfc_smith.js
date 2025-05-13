@@ -131,8 +131,10 @@ class TfcSmithing extends SmithItemContainer {
     }
 
     decompressShrinkStr(str){
+        str = str.replace("Shrink×0→", "").match(/【.*】(.*$)/)[1];
+        console.log(str);
         let shrinkMatch = str.match(/Shrink×(\d+)/);
-        return (shrinkMatch == null) ? str.match(/[^】]*$/) :  str.replace(shrinkMatch[0], "Shrink→".repeat(shrinkMatch[1])).replace(/→+/g, "→");
+        return (shrinkMatch == null) ? str.match(/[^】]*$/) : str.replace(shrinkMatch[0], "Shrink→".repeat(shrinkMatch[1])).replace(/→+/g, "→");
     }
 
 
