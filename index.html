@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="/favicon.png" type="image/png">
+        <link rel="shortcut icon" href="/favicon.png" type="image/png">
         <link href="style.css" rel="stylesheet" type="text/css">
         <script src="js/main.js"></script>
         <script src="js/tfc_ore_finder.js"></script>
@@ -379,6 +379,7 @@
                 <li>
                     粘土を掘る
                     <info>(特徴的な草(キリン草、？？？)の下に生える)</info>
+                    <info>土をたたくとグレーっぽいパーティクルがでる</info>
                     <ul>
                         <li>小さなツボ</li>
                         <li>大きなツボ</li>
@@ -387,8 +388,26 @@
                     </ul>
                 </li>
                 
-                
-                
+                <li>
+                    タンニンになる木を1スタックほど確保しておく
+                    <info>
+                        →<a href="#barrel">タンニンになる木の一覧</a>
+                        <info>カオリン粘土が存在する熱帯地域にはあまり存在しない気がする</info>
+                    </info>
+                    
+                </li>
+                <li>
+                    窯焼きで小さなツボを作る
+                    <ul class="number">
+                        <li>陶芸で小さなツボなどを作る</li>
+                        <li>1マス地面を掘り下げ、Vボタンで焼きたいものを置く(最大4個まで)</li>
+                        <li>藁を右クリックで8個置く（押しっぱなしでOK）</li>
+                        <li>丸太を右クリックで8個置く</li>
+                        <li>火きり棒[Firestarter]をShiftを押しながら右クリックし火をつける</li>
+                        <info>棒2個でクラフト</info>
+                        <li>6分40秒ほどで完成するが、熱いのですぐには使用できない</li>
+                    </ul>
+                </li>
                 <li>
                     食料確保
                     <info>
@@ -462,11 +481,41 @@
                         <info>生の肉・魚・ジャガイモなどを焼くと栄養素が増える</info>
                     </ul>
                 </li>
-                        
             </ul>
 
             <strong>石器時代</strong>
-            <ul></ul>
+            <ul>
+                <li>
+                    カオリン粘土が存在する地方へ移動しながら青銅系のどれかを狙う
+                    <ul>
+                        <li>
+                            蒼青銅[Bismuth Bronze]
+                            <info>銅、蒼鉛、亜鉛</info>
+                        </li>
+                        <li>
+                            青銅[Bronze]
+                            <info>銅、錫</info>
+                        </li>
+                        <li>
+                            黒青銅[Black Bronze]
+                            <info>銅、金、銀</info>
+                        </li>
+                    </ul>
+                    <info>基本的には蒼青銅を狙うことになる</info>
+                </li>
+
+                <li>
+                    銅の小片を拾いながら露出した銅鉱脈を見つけたら銅のツルハシを作る
+                    <ul>
+                        <li>つるはしの型を作る<a href="#pottary">→陶芸</a></li>
+                        <li>つるはしの型と小さなツボに銅の小片[Nugget]を入れたものを窯焼きする</li>
+                        <info>小片は10Unit。ツールは100Unitで作成できる</info>
+                        <li>溶けた銅が入ったツボを右クリックし、つるはしの型をスロットにセットする</li>
+                        <li>銅が固まったらつるはしのヘッドが取り出せる（型は壊れる）</li>                       
+                    </ul>
+                    <info></info>
+                </li>
+            </ul>
 
             <strong>銅器・銅合金時代</strong>
             <ul></ul>
@@ -575,72 +624,98 @@
                     </tr>
 
                     <tr>
-                        <td>[]</td>
+                        <td>黄銅[Brass]</td>
                         <td>
-
+                            Copper<br>
+                            Zinc    
                         </td>
                         <td>
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>[]</td>
-                        <td>
-
-                        </td>
-                        <td>
-
+                            88% ～ 92%<br>
+                            8% ～ 12%
                         </td>
                     </tr>
 
                     <tr>
-                        <td>[]</td>
+                        <td>スターリングシルバー<br>[Sterling Silver]</td>
                         <td>
-
+                            Copper<br>
+                            Silver
                         </td>
                         <td>
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>[]</td>
-                        <td>
-
-                        </td>
-                        <td>
-
+                            20% ～ 40%<br>
+                            60% ～ 80%
                         </td>
                     </tr>
 
                     <tr>
-                        <td>[]</td>
+                        <td>ローズゴールド[Rose Gold]</td>
                         <td>
-
+                            Copper<br>
+                            Gold
                         </td>
                         <td>
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>[]</td>
-                        <td>
-
-                        </td>
-                        <td>
-
+                            15% ～ 30%<br>
+                            70% ～ 85%
                         </td>
                     </tr>
 
                     <tr>
-                        <td>[]</td>
+                        <td>黒鋼[Black Steel]</td>
                         <td>
-
+                            Steel<br>
+                            Nickel<br>
+                            Black Bronze
                         </td>
                         <td>
+                            50% ～ 70%<br>
+                            15% ～ 25%<br>
+                            15% ～ 25%
+                        </td>
+                    </tr>
 
+                    <tr>
+                        <td>青鋼[Blue Steel]</td>
+                        <td>
+                            Black Steel<br>
+                            Steel<br>
+                            Bismuth Bronze<br>
+                            Sterling Silver
+                        </td>
+                        <td>
+                            50% ～ 55%<br>
+                            20% ～ 25%<br>
+                            10% ～ 15%<br>
+                            10% ～ 15%
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>赤鋼[Red Steel]</td>
+                        <td>
+                            BlackSteel<br>
+                            Steel<br>
+                            Brass<br>
+                            RoseGold
+                        </td>
+                        <td>
+                            50% ～ 55%<br>
+                            20% ～ 25%<br>
+                            10% ～ 15%<br>
+                            10% ～ 15%
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>ステンレス鋼<br>[Stainless Steel]</td>
+                        <td>
+                            Steel<br>
+                            Nickel<br>
+                            Chromium
+                        </td>
+                        <td>
+                            60% ～ 80%<br>
+                            10% ～ 20%<br>
+                            20% ～ 30%
                         </td>
                     </tr>
                 </tbody>
@@ -1469,6 +1544,26 @@
             </ul>
             鉱物:50%、小石:25%、宝石:1%(地質により種類が異なる)
         </div>
+
+
+        <div class="article" id="sluices">
+            <h2>樋流し[Sluice]</h2>
+            <ultitle>必要素材:</ultitle>
+            <ul>
+                <li>板材</li>
+                <li>棒</li>
+            </ul>
+
+            <ultitle>作業手順:</ultitle>
+            <ul class="number">
+                <li>水流の端の隣(流れの方向に合わせて)を1マス掘り下げる</li>
+                <li>掘り下げた場所をさらに水流の流れの方向に3マス掘る</li>
+                <li>最も水流から離れた場所を1マス掘り下げる</li>
+                <li>2.の2マスの平らな部分に樋[Sluice]を設置する</li>
+            </ul>
+        </div>
+
+
 
         <div class="article" id="prospecting">
             <h2>鉱脈調査[Prospecting]の概要と必要素材</h2>
