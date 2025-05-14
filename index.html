@@ -94,7 +94,7 @@
                             <tr>
                                 <td>マイリスト:</td>
                                 <td>
-                                    <input list="utility_smithing_mylist_data" id="utility_smithing_mylist" style="width: 249px;" autocomplete="off" onfocus="this.value=''" onchange="navigator.clipboard.writeText(tfcSmithing.decompressShrinkStr(this.value)); document.getElementById('utility_smithing_target_value').focus();">
+                                    <input list="utility_smithing_mylist_data" id="utility_smithing_mylist" style="width: 249px;" autocomplete="off" onfocus="this.value=''" onchange="tfcSmithing.setActionsToClipboard(this);">
                                     <button class="button_header" onclick="tfcSmithing.delete();">delete</button>
                                     <datalist id="utility_smithing_mylist_data"></datalist>
                                 </td>                                

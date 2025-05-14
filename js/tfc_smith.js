@@ -40,9 +40,10 @@ class TfcSmithing extends SmithItemContainer {
             .sort((a, b) => a.length - b.length);
 
         //console.log(results);
-        console.log(results[0]);
+        //console.log(results[0]);
         let resultStr = this.compressShrinkStr(results[0].value);     
         this.appendNewItemToMyList(toolName, resultStr);
+        this.setActionsToClipboard(this.myListEl);//追加したと同時にクリップボードにセットする
     }
 
     delete(){
@@ -59,8 +60,7 @@ class TfcSmithing extends SmithItemContainer {
         }
 
         localStorage.setItem("smith_mylist", items.filter(x => x != selectedValue).join(","));
-        this.initializeMyList(selectedValue);
-
+        this.initializeMyList();
     }
 
     appendNewItemToMyList(toolName, patternStr){
@@ -69,8 +69,7 @@ class TfcSmithing extends SmithItemContainer {
         let userInput = prompt("登録名を入力してください。", "【】" + toolName + patternStr);
         if (userInput == null || userInput == "") return;
 
-        this.setOptionToMyList(userInput);
-       
+        this.setOptionToMyList(userInput);               
     }
 
     existsOption(patternStr){
@@ -110,7 +109,6 @@ class TfcSmithing extends SmithItemContainer {
 
         this.myListEl.value = (defaultValue == "") ? "" : defaultValue;
     }
-
  
 
 
@@ -118,6 +116,7 @@ class TfcSmithing extends SmithItemContainer {
         return patternStr.includes("】") ? patternStr.match(/^【.*】(.*$)/)[1] : patternStr;
     }
 
+    
     compressShrinkStr(str){
         let actionArr = str.split("→");
 
@@ -130,11 +129,19 @@ class TfcSmithing extends SmithItemContainer {
         return "Shrink×" + shrinkCount + "→" + actionArr.join("→");
     }
 
+
     decompressShrinkStr(str){
         str = /【/.test(str) ? str.replace("Shrink×0→", "").match(/【.*】(.*$)/)[1] : str;
         //console.log(str);
         let shrinkMatch = str.match(/Shrink×(\d+)/);
         return (shrinkMatch == null) ? str.match(/[^】]*$/) : str.replace(shrinkMatch[0], "Shrink→".repeat(shrinkMatch[1])).replace(/→+/g, "→");
+    }
+
+
+    setActionsToClipboard(el){
+        //console.log(tfcSmithing.decompressShrinkStr(el.value));
+        navigator.clipboard.writeText(tfcSmithing.decompressShrinkStr(el.value)); 
+        document.getElementById('utility_smithing_target_value').focus();        
     }
 
 
