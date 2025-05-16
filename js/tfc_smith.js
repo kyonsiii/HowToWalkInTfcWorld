@@ -15,10 +15,7 @@ class TfcSmithing extends SmithItemContainer {
     }
 
 
-    getResults(targetNum, finishPattern){
-
-         
-    }
+    
 
     calc(){
         let targetNum = Number(document.getElementById('utility_smithing_target_value').value);
@@ -39,8 +36,6 @@ class TfcSmithing extends SmithItemContainer {
            .filter((x, i, arr) => i === arr.findIndex(t => t.length === x.length))
             .sort((a, b) => a.length - b.length);
 
-        //console.log(results);
-        //console.log(results[0]);
         let resultStr = this.compressShrinkStr(results[0].value);     
         this.appendNewItemToMyList(toolName, resultStr);
         this.setActionsToClipboard(this.myListEl);//追加したと同時にクリップボードにセットする

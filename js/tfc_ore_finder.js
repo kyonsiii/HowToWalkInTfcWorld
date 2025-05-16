@@ -25,6 +25,20 @@ class OreFinder{
         }
     }
 
+    clearValues(){
+        document.getElementById("finder_x_1").value = "";
+        document.getElementById("finder_x_2").value = "";
+        document.getElementById("finder_x_result").textContent = "----";
+
+        document.getElementById("finder_y_1").value = "";
+        document.getElementById("finder_y_2").value = "";
+        document.getElementById("finder_y_result").textContent = "----";
+
+        document.getElementById("finder_z_1").value = "";
+        document.getElementById("finder_z_2").value = "";
+        document.getElementById("finder_z_result").textContent = "----";        
+    }
+
 }
 
 class TfcTimerModule{
