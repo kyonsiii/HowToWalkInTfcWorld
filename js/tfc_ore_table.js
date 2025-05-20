@@ -14,7 +14,7 @@ class OreTableManager{
             "Phyllite,Metamorphic,,,,,,,○,,,,,,,,,,,,,,,,,,,○,,,",
             "Schist,Metamorphic,,,,○,,,○,,,,○,,,,,,,,,,,,,,,○,,,",
             "Gneiss,Metamorphic,,,,○,,,○,,,,○,,,,,,,,,,,,,,,○,,,",
-            "Marble,Metamorphic,,,,○,,○,○,,,,,,,,,,,,,,,,,,○,○,,,",
+            "Marble,Metamorphic,,○,,○,,○,○,,,,,,,,,,,,,,,,,,○,○,,,",
             "Rhyolite,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,",
             "Basalt,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,",
             "Andesite,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,",

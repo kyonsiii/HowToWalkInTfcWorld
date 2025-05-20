@@ -341,6 +341,22 @@
 
 
         <h1>むちゃくちゃ基礎</h1>
+        <div class="world">
+            バニラとの主な違い
+            <ul>
+                <li>TFCには重力の概念があり、土・砂利・丸石ブロックなど一部のブロックは縦に積み上げることができない。</li>
+                <li>温度や雨量の概念があり、植生や地質に影響する</li>
+                <li>農業・畜産でなかなか成長しない</li>
+                <li>鉱石はまばらに広がっているのではなく特定の地層・深度にまとまって鉱脈で存在する</li>
+                
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
         <div class="article">
             <h2>チュートリアル</h2>
             <strong>石器時代の序盤</strong>
@@ -388,7 +404,13 @@
                     </ul>
                 </li>
                 
-                <li>
+               
+                </li>
+            </ul>
+
+            <strong>石器時代</strong>
+            <ul>
+                 <li>
                     タンニンになる木を1スタックほど確保しておく
                     <info>
                         →<a href="#barrel">タンニンになる木の一覧</a>
@@ -480,11 +502,7 @@
                         <info>棒を焼くと松明ができる</info>
                         <info>生の肉・魚・ジャガイモなどを焼くと栄養素が増える</info>
                     </ul>
-                </li>
-            </ul>
 
-            <strong>石器時代</strong>
-            <ul>
                 <li>
                     カオリン粘土が存在する地方へ移動しながら青銅系のどれかを狙う
                     <ul>
@@ -502,23 +520,38 @@
                         </li>
                     </ul>
                     <info>基本的には蒼青銅を狙うことになる</info>
+                    <info>↑山の地帯だとY80以上のところで錫が出るので青銅もよさそう</info>
+                    <info>↑錫の小片は錫を含んだ砂利が川で見つかれば比較的手に入る →<a href="#panning">砂金取り</a></info>
                 </li>
 
                 <li>
                     銅の小片を拾いながら露出した銅鉱脈を見つけたら銅のツルハシを作る
                     <ul>
-                        <li>つるはしの型を作る<a href="#pottary">→陶芸</a></li>
-                        <li>つるはしの型と小さなツボに銅の小片[Nugget]を入れたものを窯焼きする</li>
+                        <li>つるはしの型とノコギリの型を作る<a href="#pottary">→陶芸</a></li>
+                        <li>型と小さなツボに銅の小片[Nugget]を入れたものを窯焼きする</li>
                         <info>小片は10Unit。ツールは100Unitで作成できる</info>
-                        <li>溶けた銅が入ったツボを右クリックし、つるはしの型をスロットにセットする</li>
-                        <li>銅が固まったらつるはしのヘッドが取り出せる（型は壊れる）</li>                       
+                        <li>溶けた銅が入ったツボを右クリックし、型をスロットにセットする</li>
+                        <li>銅が固まったら各ツールのヘッドが取り出せる（型は壊れる）</li>   
+                        <info>最悪、つるはしさえあれば露出した銅鉱脈や露天掘りで銅を集められる。</info>
+                        <info>梁があったほうが安定するのでノコギリもあったほうがよい→<a href="#support_beam">梁</a></info>                    
                     </ul>
                     <info></info>
                 </li>
             </ul>
 
             <strong>銅器・銅合金時代</strong>
-            <ul></ul>
+            <ul>
+                <li>
+                    石の金床[Anvil]を作成できる石と溶剤[Flux]を作成できる石を探しておく
+                    <info><a href="#ore_mineral">→鉱物</a></info>
+                    <info><a href="#stone_anvil_flux">→石の金床と溶剤</a></info>
+                    <info>石ブロックの周囲6マスを破壊すると持ち運べる</info>
+                    <info>
+                        <info>・地中深くを掘ればたいてい石の金床にできる岩がある</info>
+                        <info>・地表の小石で地中の変成岩が特定できるのでFluxはだいたい近場で確保できる</info>
+                    </info>
+                </li>
+            </ul>
 
             <strong>錬鉄時代</strong>
             <ul>
@@ -1387,8 +1420,104 @@
                     <tbody></tbody>
                 </table>
             </div>
+
+            <img src="img/food/fruit.png">
+            <img src="img/food/berry.png">
           
         </div>
+
+
+        <div class="article" id="bloomery">
+            <h2>塊鉄炉[Bloomery]の概要と必要素材</h2>
+            鉄鉱石（磁鉄鉱、褐鉄鉱、赤鉄鉱）と石炭からまず鋳鉄[Cast Iron]を作る。<br>
+            Cast Ironはツールに使えない。100UnitのCast Iron材料として使用はできる。<br>
+            錬鉄の製品は再び溶かすと錬鉄ではなく鋳鉄になる。<br>
+            塊鉄炉では鉄鉱石だけではなくインゴットやシャベルなどのツールも材料として使用できる。<br>
+
+            <ultitle>必要材料:</ultitle>
+            <ul>
+                <li>
+                    青銅系のダブルシート…8個
+                    <ul>
+                        <li>Bronze</li>
+                        <li>Bismuth Bronze</li>
+                        <li>Black Bronze  のいずれか</li>            
+                    </ul>
+                </li>
+                <li>
+                    石ブロック
+                </li>
+            </ul>
+
+            <ultitle>作成方法:</ultitle>
+            <ul class="number">
+                <li>最下段に3x3の石を設置</li>
+                <li>2段目の手前の左右に石を配置、真ん中に仮ブロックを配置</li>
+                <li>3段目～5段目は十字の真ん中以外に配置し煙突を作成</li>
+                <li>仮ブロックの場所に塊鉄炉を配置</li>
+            </ul>
+
+            <ultitle>使用法:</ultitle>
+            <ul class="number">
+                <li>ハシゴなどでてっぺんに上る</li>
+                <li>鉄鉱石、インゴット、鉄製品などを煙突に投げ入れる</li>
+                <li>適切な割合で木炭(石炭は不可)などを煙突に投げ入れる</li>
+                <info>100mbのCast Ironを作成するのに木炭2つ消費する</info>
+                <li>塊鉄炉の扉を閉めて(開いててもOK?)火をつける</li>
+                <info>SHIFTを押しながら火をつける</info>
+                <info>扉を開けたまま火をつけたら勝手にしまった</info>
+                <li>2分30秒で焼結鉱[Raw Iron Bloom]が何層かできる</li>
+            </ul>
+
+            <ultitle>精錬方法:</ultitle>
+            <ul class="number">
+                <li>青銅以上のTierの金床で焼結鉱を精錬された焼結鉱[Refined Iron Bloom]にする</li>
+                <li>もう一度精錬すると錬鉄[Wrought Iron Bloom]になる</li>
+            </ul>
+        </div>
+
+        <div class="crucible">
+            <h2>るつぼ[Crucible]の作成と概要</h2>
+            るつぼの中で合金を作ることができる。<br>
+            合金を材料とする合金の場合、一度合金を取り出してインゴットなどに加工してから使用しないとUnknown Metalになる。
+            ツボに材料を入れ、そのツボをスロットに置くと中身が溶け出す。
+            ただし、中身が多いと熱が入る速度が遅くなる
+
+             <ultitle>必要材料:</ultitle>
+            <ul>
+                <li>
+                    耐火粘土[Fire Clay]
+                    <ul>
+                        <li>粘土</li>
+                        <li>Bismuth Bronze</li>
+                        <li>Black Bronze  のいずれか</li>            
+                    </ul>
+                </li>
+                <li>
+                    石ブロック
+                </li>
+            </ul>
+
+            <ultitle>作成方法:</ultitle>
+            <ul class="number">
+                <li>最下段に3x3の石を設置</li>
+                <li>2段目の手前の左右に石を配置、真ん中に仮ブロックを配置</li>
+                <li>3段目～5段目は十字の真ん中以外に配置し煙突を作成</li>
+                <li>仮ブロックの場所に塊鉄炉を配置</li>
+            </ul>
+
+        </div>
+
+
+        <div class="blast_furnace">
+            <h2>高炉[Blast Furnace]</h2>
+        </div>
+
+
+
+
+
+
 
 
         <div class="article" id="barrel">
