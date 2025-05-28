@@ -23,6 +23,13 @@ class TfcSmithing extends SmithItemContainer {
         let finishPattern = this.getFinishPattern(finishPatternRaw);
         let toolName = finishPatternRaw.match(/^.*?】/)[0];
 
+        console.log({
+            targetNum: targetNum,
+            finishPatternRaw: finishPatternRaw,
+            finishPattern: finishPattern,
+            toolName: toolName
+        });
+
         let reg = new RegExp(finishPattern, "i");
         let finishList = this.finishActions.filter(a => reg.test(a.finishPattern))
                                           .filter((item, index, self) => index === self.findIndex(t => t.value === item.value));
@@ -36,6 +43,11 @@ class TfcSmithing extends SmithItemContainer {
            .filter((x, i, arr) => i === arr.findIndex(t => t.length === x.length))
             .sort((a, b) => a.length - b.length);
 
+        console.log({
+            reg: reg,
+            finishList:finishList,
+            results: results
+        });
         let resultStr = this.compressShrinkStr(results[0].value);     
         this.appendNewItemToMyList(toolName, resultStr);
         this.setActionsToClipboard(this.myListEl);//追加したと同時にクリップボードにセットする
