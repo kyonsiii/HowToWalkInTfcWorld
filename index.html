@@ -1427,6 +1427,28 @@
         </div>
 
 
+        <div class="article" id="charcoal_forge">
+            <h2>炉[Charcoal Forge]の概要</h2>
+            金属を温めたりするために使う
+
+            <ultitle>必要材料:</ultitle>
+            <ul>
+                <li>木炭 7～8個</li>
+                <info>8個だと作成と同時に火が付く・・・？<unchecked>未検証</unchecked></info>
+                <li>石・丸石ブロック 5個</li>
+                
+            </ul>
+
+            <ultitle>作成方法:</ultitle>
+            <ul class="number">
+                <li>上面以外の5面を石ブロックにしてその中に木炭を右クリックで7層積む</li>
+                <li>火きり棒で火をつける</li>
+            </ul>
+
+        </div>
+
+
+
         <div class="article" id="bloomery">
             <h2>塊鉄炉[Bloomery]の概要と必要素材</h2>
             鉄鉱石（磁鉄鉱、褐鉄鉱、赤鉄鉱）と石炭からまず鋳鉄[Cast Iron]を作る。<br>
@@ -1476,14 +1498,15 @@
             </ul>
         </div>
 
-        <div class="crucible">
+        <div class="article" id="crucible">
             <h2>るつぼ[Crucible]の作成と概要</h2>
             るつぼの中で合金を作ることができる。<br>
+            最大4,000mb<br>
             合金を材料とする合金の場合、一度合金を取り出してインゴットなどに加工してから使用しないとUnknown Metalになる。
             ツボに材料を入れ、そのツボをスロットに置くと中身が溶け出す。
             ただし、中身が多いと熱が入る速度が遅くなる
 
-             <ultitle>必要材料:</ultitle>
+            <ultitle>必要材料:</ultitle>
             <ul>
                 <li>
                     耐火粘土[Fire Clay]
@@ -1509,8 +1532,77 @@
         </div>
 
 
-        <div class="blast_furnace">
+        <div class="article" id="blast_furnace">
             <h2>高炉[Blast Furnace]</h2>
+            鋼鉄[Steel]を作るのに使う。
+            
+            <ultitle>必要材料:</ultitle>
+            <ul>
+                <li>
+                    鉄のシート[Iron Sheet] 8個
+                    <info>あくまで高炉を作るのに必要な数で、別途最低12個必要</info>
+                    <info>煙突を最大限設置するには60個必要になる(12個x5層)</info>
+                </li>
+
+                <li>
+                    るつぼ[Crucible]
+                    <info>作成のほかにもう一つ受け皿として必要になる</info>
+                </li>
+                
+                <li>
+                    耐火レンガ[Fire Brick] 4～20個
+                    <ul>
+                        <li>耐火粘土[Fire Clay]</li>
+                        <li>
+                            モルタル[Mortar]
+                            <info><a href="#barrel">→石灰水で作るアイテム</a>を参照</info>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    羽口[Tuyere]
+                    <ul>
+                        <li>鉄のダブルシート</li>
+                    </ul>
+                    <info>UIで羽口を設置しないとふいごが動かない</info>
+                </li>
+                
+                <li>ふいご[Bellow]</li>
+            </ul>
+
+            <ultitle>作成方法:</ultitle>
+            <ul class="number weak">
+                <li>炉の上にるつぼを設置</li>  
+                <li>るつぼの上に高炉を設置</li>
+                <li>高炉の横にふいごを設置（向きに気を付ける）</li>
+                <li>高炉の上に仮ブロックを設置し、四方に耐火レンガを設置</li>
+                <li>耐火レンガの外側にSHIFTを押しながら右クリックで鉄のシートを貼り付ける</li>
+                <info>
+                    耐火レンガの煙突1層につき4つのアイテムを保持でき、最大5層まで設置可能
+                </info>              
+            </ul>
+
+            <ultitle>使用法:</ultitle>
+            <ul class="number weak">
+                <li>
+                    屋根の上に登り、鉄鉱石と同数の溶剤[Flux]を投入する
+                    <info>鋳鉄になるようなアイテムならなんでもOK</info>
+                    <info>投入したもののUnitでかなり溶けやすさが違う</info>
+                </li>
+                <li>
+                    木炭も投入する。
+                    <info>鉄や木炭はあえて多めに投入しておくことで消費後にすぐ補充される</info>
+                    <info>（多すぎると時間で消えるので注意）</info>
+                </li>
+                <li>
+                    火きり棒や着火器具[Flint And Steel]で高炉に火をつける
+                </li>
+                <li>
+                    
+                </li>
+            </ul>
+
         </div>
 
 

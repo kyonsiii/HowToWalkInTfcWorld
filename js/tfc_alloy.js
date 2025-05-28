@@ -72,7 +72,7 @@ class TfcAlloy{
 
 
     setMaterialNumsToList(list){
-        for (let i = 0 ; i < 64; i++){
+        for (let i = 0 ; i < 512; i++){
             list.appendChild(this.getListOption(i, i));
         }
     }
