@@ -23,13 +23,6 @@ class TfcSmithing extends SmithItemContainer {
         let finishPattern = this.getFinishPattern(finishPatternRaw);
         let toolName = finishPatternRaw.match(/^.*?】/)[0];
 
-        console.log({
-            targetNum: targetNum,
-            finishPatternRaw: finishPatternRaw,
-            finishPattern: finishPattern,
-            toolName: toolName
-        });
-
         let reg = new RegExp(finishPattern, "i");
         let finishList = this.finishActions.filter(a => reg.test(a.finishPattern))
                                           .filter((item, index, self) => index === self.findIndex(t => t.value === item.value));
@@ -42,12 +35,7 @@ class TfcSmithing extends SmithItemContainer {
         }).map(x => ({value: x, length: x.split("→").length}))
            .filter((x, i, arr) => i === arr.findIndex(t => t.length === x.length))
             .sort((a, b) => a.length - b.length);
-
-        console.log({
-            reg: reg,
-            finishList:finishList,
-            results: results
-        });
+   
         let resultStr = this.compressShrinkStr(results[0].value);     
         this.appendNewItemToMyList(toolName, resultStr);
         this.setActionsToClipboard(this.myListEl);//追加したと同時にクリップボードにセットする
@@ -71,21 +59,21 @@ class TfcSmithing extends SmithItemContainer {
     }
 
     appendNewItemToMyList(toolName, patternStr){
-        if (this.existsOption(patternStr)) return;
-
         let userInput = prompt("登録名を入力してください。", "【】" + toolName + patternStr);
         if (userInput == null || userInput == "") return;
+
+        if (this.existsOption(userInput)){
+            alert("同じ項目が存在するので登録を中止します。");
+            return;
+        }
 
         this.setOptionToMyList(userInput);               
     }
 
-    existsOption(patternStr){
-        let decPatternStr = this.decompressShrinkStr(patternStr);
+    existsOption(userInput){
         for (let i = 0; i < this.myListDataSetEl.children.length; i++){
             let option = this.myListDataSetEl.children[i];
-            //console.log({object: option, value: option.value});
-            let tmpPatternStr = this.decompressShrinkStr(this.getFinishPattern(option.value));
-            if (tmpPatternStr == decPatternStr) return true;
+            if (option.value == userInput) return true;
         }
         return false;
     }
