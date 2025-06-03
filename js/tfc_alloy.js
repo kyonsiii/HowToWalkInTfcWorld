@@ -155,6 +155,7 @@ class TfcAlloyCompositionElementContainer{
         this.currentRatio.textContent = "----";
         this.currentCheck.textContent = "----";
         this.currentCheck.parentNode.style.backgroundColor = "mistyrose";
+        this.currentSubtotalResult = 0;
     }
 
     
