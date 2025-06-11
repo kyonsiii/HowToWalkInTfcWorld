@@ -19,9 +19,10 @@ class TfcSmithing extends SmithItemContainer {
 
     calc(){
         let targetNum = Number(document.getElementById('utility_smithing_target_value').value);
-        let finishPatternRaw = document.getElementById('utility_smithing_finish_list').value;
-        let finishPattern = this.getFinishPattern(finishPatternRaw);
-        let toolName = finishPatternRaw.match(/^.*?】/)[0];
+        let finishPatternRow = document.getElementById('utility_smithing_finish_list').value;
+        let m = finishPatternRow.match(/(^.*?】)*(.*$)/);        
+        let toolName = m[1] ?? "【】";
+        let finishPattern = m[2];
 
         let reg = new RegExp(finishPattern, "i");
         let finishList = this.finishActions.filter(a => reg.test(a.finishPattern))
@@ -40,6 +41,8 @@ class TfcSmithing extends SmithItemContainer {
         this.appendNewItemToMyList(toolName, resultStr);
         this.setActionsToClipboard(this.myListEl);//追加したと同時にクリップボードにセットする
     }
+
+    
 
     delete(){
         let items = localStorage.getItem("smith_mylist").split(",");
@@ -107,9 +110,6 @@ class TfcSmithing extends SmithItemContainer {
  
 
 
-    getFinishPattern(patternStr){
-        return patternStr.includes("】") ? patternStr.match(/^【.*】(.*$)/)[1] : patternStr;
-    }
 
     
     compressShrinkStr(str){
