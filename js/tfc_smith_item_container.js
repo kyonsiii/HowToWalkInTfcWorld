@@ -27,7 +27,7 @@ class SmithItemContainer{
             "【グリル】Draw→Punch→Punch$",
             "【ボルト】[^→]*Hit→Punch→[^→]*Hit$",
             "【オール金具】[^→]*Hit→[^→]*Hit→Bend$",
-            "【ギア】Punch→Bend→Punch$",
+            "【ギア】Punch→[^→]*Hit→Punch$",
             "【鉄精錬1】[^→]*Hit→[^→]*Hit→[^→]*Hit$"
         ];
 
