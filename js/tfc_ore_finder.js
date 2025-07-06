@@ -21,7 +21,7 @@ class OreFinder{
         }
         else{
             resultSpan.textContent = (isNaN(num1) || isNaN(num2)) ? "----"
-                                    : Math.round((num1 + num2) / 2);
+                                    : Math.round((num1 + num2) / 2) + " / size: " + Math.abs(num1 - num2);
         }
     }
 
