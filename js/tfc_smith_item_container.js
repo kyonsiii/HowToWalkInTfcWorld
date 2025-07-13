@@ -28,7 +28,8 @@ class SmithItemContainer{
             "【ボルト】[^→]*Hit→Punch→[^→]*Hit$",
             "【オール金具】[^→]*Hit→[^→]*Hit→Bend$",
             "【ギア】Punch→[^→]*Hit→Punch$",
-            "【鉄精錬1】[^→]*Hit→[^→]*Hit→[^→]*Hit$"
+            "【鉄精錬1】[^→]*Hit→[^→]*Hit→[^→]*Hit$",
+            "【羽口】Bend→Bend$"
         ];
 
         this.finishActions = 
