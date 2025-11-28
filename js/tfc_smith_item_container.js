@@ -9,6 +9,7 @@ class SmithItemContainer{
             "【ランプ】Draw→Bend→Bend$",
             "【オノ】Upset→[^→]*Hit→Punch$",
             "【チェーン】[^→]*Hit→[^→]*Hit→Draw$",
+            "【吹き竿】[^→]*Hit→Draw→Draw$",
             "【ナイフ】Draw→Draw→[^→]*Hit$",
             "【探鉱槌】Draw→Bend→Punch$",
             "【ジャベリン】",

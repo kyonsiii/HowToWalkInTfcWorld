@@ -1,30 +1,30 @@
 class OreTableManager{
     constructor(tableEl, listEl){
-        this.rowHeaders = "Category,RockName,Anvil,Flux,Kaolinite,Graphite,NativeCopper,Malachite,Tetraheadrite,Sphalerite,Bismuthinite,NativeGold,NativeSilver,Magnetite,Limonite,Hematite,Cassiterite,Garnierite,BituminousCoal,Lignite,Cinnabar,Cryolite,Saltpeter,Sulfur,Sylvite,Borax,LapisLazli,Gypsum,Halite,Emerald,Kimberlite,Amethyst,Opal".split(",");
+        this.rowHeaders = "Category,RockName,Anvil,Flux,Kaolinite,Graphite,NativeCopper,Malachite,Tetraheadrite,Sphalerite,Bismuthinite,NativeGold,NativeSilver,Magnetite,Limonite,Hematite,Cassiterite,Garnierite,BituminousCoal,Lignite,Cinnabar,Cryolite,Saltpeter,Sulfur,Sylvite,Borax,LapisLazli,Gypsum,Halite,Emerald,Kimberlite,Amethyst,Opal,Chromite".split(",");
         this.data = [
-            "Limestone,Sedimentary,,○,,,,○,,,○,,,○,○,,,,○,○,,,○,,,○,○,,○,,,○,○",
-            "Dolomite, Sedimentary,,○,,,,△,,,○,,,○,○,,,,○,○,,,○,,,,,,○,,,○,○",
-            "Chalk,Sedimentary,,○,,,,△,,,○,,,○,○,,,,○,○,,,○,,,,,,○,,,○,○",
-            "Shale,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,○,,○,,○,○,,,○,,,○,○",
-            "Claystone,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,,,○,,○,○,,,○,,,○,○",
-            "Conglomerate,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,,,○,,,,,,○,,,○,○",
-            "Chert,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,,,○,,○,,,,○,,,○,○",
+            "Limestone,Sedimentary,,○,,,,○,,,○,,,○,○,,,,○,○,,,○,,,○,○,,○,,,○,○,",
+            "Dolomite, Sedimentary,,○,,,,△,,,○,,,○,○,,,,○,○,,,○,,,,,,○,,,○,○,",
+            "Chalk,Sedimentary,,○,,,,△,,,○,,,○,○,,,,○,○,,,○,,,,,,○,,,○,○,",
+            "Shale,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,○,,○,,○,○,,,○,,,○,○,",
+            "Claystone,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,,,○,,○,○,,,○,,,○,○,",
+            "Conglomerate,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,,,○,,,,,,○,,,○,○,",
+            "Chert,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,,,○,,○,,,,○,,,○,○,",
 
-            "Quartzite,Metamorphic,,,,○,,,○,,,,,,,,,,,,○,,,,,,,○,,,,○,",
-            "Slate,Metamorphic,,,,,,,○,,,,,,,,,,,,,,,,,,,○,,,,○,",
-            "Phyllite,Metamorphic,,,,,,,○,,,,,,,,,,,,,,,,,,,○,,,,○,",
-            "Schist,Metamorphic,,,,○,,,○,,,,○,,,,,,,,,,,,,,,○,,,,○,",
-            "Gneiss,Metamorphic,,,,○,,,○,,,,○,,,,,,,,,,,,,,,○,,,,○,",
-            "Marble,Metamorphic,,○,,○,,○,○,,,,,,,,,,,,,,,,,,○,○,,,,○,",
+            "Quartzite,Metamorphic,,,,○,,,○,,,,,,,,,,,,○,,,,,,,○,,,,○,,",
+            "Slate,Metamorphic,,,,,,,○,,,,,,,,,,,,,,,,,,,○,,,,○,,○",
+            "Phyllite,Metamorphic,,,,,,,○,,,,,,,,,,,,,,,,,,,○,,,,○,,○",
+            "Schist,Metamorphic,,,,○,,,○,,,,○,,,,,,,,,,,,,,,○,,,,○,,○",
+            "Gneiss,Metamorphic,,,,○,,,○,,,,○,,,,,,,,,,,,,,,○,,,,○,,○",
+            "Marble,Metamorphic,,○,,○,,○,○,,,,,,,,,,,,,,,,,,○,○,,,,○,,○",
             
-            "Rhyolite,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,,,○",
-            "Basalt,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,,,○",
-            "Andesite,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,,,○",
-            "Dacite,IgneousExtrusive,○,,,,○,,,△,,○,,,,,,,,,,,,,,,,,,,,,○",
+            "Rhyolite,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,,,○,",
+            "Basalt,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,,,○,",
+            "Andesite,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,,,○,",
+            "Dacite,IgneousExtrusive,○,,,,○,,,△,,○,,,,,,,,,,,,,,,,,,,,,○,",
 
-            "Granite,IgneousIntrusive,○,,,,,,,○,○,○,○,,,,○,△,,,○,○,,○,,,,,,○,,,",
-            "Diorite,IgneousIntrusive,○,,,,,,,○,○,○,○,,,,○,△,,,○,,,○,,,,,,○,,,",
-            "Gabbro,IgneousIntrusive,○,,,,,,,○,○,○,,,,,○,○,,,○,,,○,,,,,,○,○,,"
+            "Granite,IgneousIntrusive,○,,,,,,,○,○,○,○,,,,○,△,,,○,○,,○,,,,,,○,,,,○",
+            "Diorite,IgneousIntrusive,○,,,,,,,○,○,○,○,,,,○,△,,,○,,,○,,,,,,○,,,,○",
+            "Gabbro,IgneousIntrusive,○,,,,,,,○,○,○,,,,,○,○,,,○,,,○,,,,,,○,○,,,○"
             ].map(d => d.replace(" ","").split(","));
 
             this.table = tableEl;
