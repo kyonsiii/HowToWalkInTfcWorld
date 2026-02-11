@@ -1,60 +1,85 @@
 class OreTableManager{
     constructor(tableEl, listEl){
-        this.rowHeaders = "Category,RockName,Anvil,Flux,Kaolinite,Graphite,NativeCopper,Malachite,Tetraheadrite,Sphalerite,Bismuthinite,NativeGold,NativeSilver,Magnetite,Limonite,Hematite,Cassiterite,Garnierite,BituminousCoal,Lignite,Cinnabar,Cryolite,Saltpeter,Sulfur,Sylvite,Borax,LapisLazli,Gypsum,Halite,Emerald,Kimberlite,Amethyst,Opal,Chromite".split(",");
+        //this.rowHeaders = "Category,RockName,Anvil,Flux,Kaolinite,Graphite,NativeCopper,Malachite,Tetraheadrite,Sphalerite,Bismuthinite,NativeGold,NativeSilver,Magnetite,Limonite,Hematite,Cassiterite,Garnierite,BituminousCoal,Lignite,Cinnabar,Cryolite,Saltpeter,Sulfur,Sylvite,Borax,LapisLazli,Gypsum,Halite,Emerald,Kimberlite,Amethyst,Opal,Chromite".split(",");
+        this.rowHeaders = "Category,RockName,Anvil,Flux,Borax,Kaolinite,Graphite,NativeCopper,Malachite,Tetraheadrite,Cassiterite,Sphalerite,Bismuthinite,NativeGold,NativeSilver,Magnetite,Limonite,Hematite,Garnierite,BituminousCoal,Lignite,Cinnabar,Cryolite,Saltpeter,Sulfur,Sylvite,LapisLazuli,Emerald,Kimberlite,Amethyst,Opal,Halite,Gypsum".split(",");
         this.data = [
-            "Limestone,Sedimentary,,○,,,,○,,,○,,,○,○,,,,○,○,,,○,,,○,○,,○,,,○,○,",
-            "Dolomite, Sedimentary,,○,,,,△,,,○,,,○,○,,,,○,○,,,○,,,,,,○,,,○,○,",
-            "Chalk,Sedimentary,,○,,,,△,,,○,,,○,○,,,,○,○,,,○,,,,,,○,,,○,○,",
-            "Shale,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,○,,○,,○,○,,,○,,,○,○,",
-            "Claystone,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,,,○,,○,○,,,○,,,○,○,",
-            "Conglomerate,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,,,○,,,,,,○,,,○,○,",
-            "Chert,Sedimentary,,,,,,,,,○,,,○,○,,,,○,○,,,○,,○,,,,○,,,○,○,",
-
-            "Quartzite,Metamorphic,,,,○,,,○,,,,,,,,,,,,○,,,,,,,○,,,,○,,",
-            "Slate,Metamorphic,,,,,,,○,,,,,,,,,,,,,,,,,,,○,,,,○,,○",
-            "Phyllite,Metamorphic,,,,,,,○,,,,,,,,,,,,,,,,,,,○,,,,○,,○",
-            "Schist,Metamorphic,,,,○,,,○,,,,○,,,,,,,,,,,,,,,○,,,,○,,○",
-            "Gneiss,Metamorphic,,,,○,,,○,,,,○,,,,,,,,,,,,,,,○,,,,○,,○",
-            "Marble,Metamorphic,,○,,○,,○,○,,,,,,,,,,,,,,,,,,○,○,,,,○,,○",
-            
-            "Rhyolite,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,,,○,",
-            "Basalt,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,,,○,",
-            "Andesite,IgneousExtrusive,○,,,,○,,,△,,○,,,,○,,,,,,,,,,,,,,,,,○,",
-            "Dacite,IgneousExtrusive,○,,,,○,,,△,,○,,,,,,,,,,,,,,,,,,,,,○,",
-
-            "Granite,IgneousIntrusive,○,,,,,,,○,○,○,○,,,,○,△,,,○,○,,○,,,,,,○,,,,○",
-            "Diorite,IgneousIntrusive,○,,,,,,,○,○,○,○,,,,○,△,,,○,,,○,,,,,,○,,,,○",
-            "Gabbro,IgneousIntrusive,○,,,,,,,○,○,○,,,,,○,○,,,○,,,○,,,,,,○,○,,,○"
+                "Limestone,Sedimentary,,○,○,,,,○,,,,○,,,○,○,,,○,○,,,○,,,○,,,○,○,○,",
+                "Dolomite,Sedimentary,,○,,,,,○,,,,○,,,○,○,,,○,○,,,○,,,,,,○,○,○,",
+                "Chalk,Sedimentary,,○,,,,,○,,,,○,,,○,○,,,○,○,,,○,,,,,,○,○,○,",
+                "Shale,Sedimentary,,,○,,,,,,,,○,,,○,○,,,○,○,○,,○,,○,,,,○,○,○,",
+                "Claystone,Sedimentary,,,○,,,,,,,,○,,,○,○,,,○,○,,,○,,○,,,,○,○,○,",
+                "Conglomerate,Sedimentary,,,,,,,,,,,○,,,○,○,,,○,○,,,○,,,,,,○,○,○,",
+                "Chert,Sedimentary,,,,,,,,,,,○,,,○,○,,,○,○,,,○,,○,,,,○,○,○,",
+                "Quartzite,Metamorphic,,,,,○,,,○,,,,,,,,,,,,○,,,,,,,,○,,,○",
+                "Slate,Metamorphic,,,,,,,,○,,,,,,,,,,,,,,,,,,,,○,,,○",
+                "Phyllite,Metamorphic,,,,,,,,○,,,,,,,,,,,,,,,,,,,,○,,,○",
+                "Schist,Metamorphic,,,,,○,,,○,,,,,○,,,,,,,,,,,,,,,○,,,○",
+                "Gneiss,Metamorphic,,,,,○,,,○,,,,,○,,,,,,,,,,,,,,,○,,,○",
+                "Marble,Metamorphic,,○,,,○,,○,○,,,,,,,,,,,,,,,,,○,,,○,,,○",
+                "Rhyolite,Igneous Extrusive,○,,,,,○,,,,△,,○,,,,○,,,,,,,,,,,,,○,,",
+                "Basalt,Igneous Extrusive,○,,,,,○,,,,△,,○,,,,○,,,,,,,,,,,,,○,,",
+                "Andesite,Igneous Extrusive,○,,,,,○,,,,△,,○,,,,○,,,,,,,,,,,,,○,,",
+                "Dacite,Igneous Extrusive,○,,,,,○,,,,△,,○,,,,○,,,,,,,,,,,,,○,,",
+                "Granite,Igneous Intrusive,○,,,,,,,,○,○,○,○,○,,,,△,,,○,○,,○,,,○,,,,,",
+                "Diorite,Igneous Intrusive,○,,,,,,,,○,○,○,○,○,,,,△,,,○,,,○,,,○,,,,,",
+                "Gabbro,Igneous Intrusive,○,,,,,,,,○,○,○,○,,,,,○,,,○,,,○,,,○,○,,,,",
             ].map(d => d.replace(" ","").split(","));
 
             this.table = tableEl;
             this.filterList = listEl;
             this.filterList.innerHTML = this.rowHeaders.map(x => "<option value=\"" + x + "\">" + x + "</option>").join("\n");
 
+            let etcOption = document.createElement("option");
+            etcOption.textContent = "≪Etc≫";
+            etcOption.value = "Halite,Gypsum";
+            this.filterList.insertBefore(etcOption, this.filterList.children[this.rowHeaders.indexOf("Halite")]);
+
+            let jewllyOption = document.createElement("option");
+            jewllyOption.textContent = "≪Jwelly≫";
+            jewllyOption.value = "LapisLazuli,Emerald,Kimberlite,Amethyst,Opal";
+            this.filterList.insertBefore(jewllyOption, this.filterList.children[this.rowHeaders.indexOf("LapisLazuli")]);
+
             let fertilizerOption = document.createElement("option");
             fertilizerOption.textContent = "≪Fertilizer≫";
             fertilizerOption.value = "Saltpeter,Sylvite";
             this.filterList.insertBefore(fertilizerOption, this.filterList.children[this.rowHeaders.indexOf("Saltpeter")]);
-
-            let coalOption = document.createElement("option");
-            coalOption.textContent = "≪Coal≫";
-            coalOption.value = "BituminousCoal,Lignite";
-            this.filterList.insertBefore(coalOption, this.filterList.children[this.rowHeaders.indexOf("BituminousCoal")]);
 
             let redStoneOption = document.createElement("option");
             redStoneOption.textContent = "≪Redstone≫";
             redStoneOption.value = "Cinnabar,Cryolite";
             this.filterList.insertBefore(redStoneOption, this.filterList.children[this.rowHeaders.indexOf("Cinnabar")]);
 
+
+            let coalOption = document.createElement("option");
+            coalOption.textContent = "≪Coal≫";
+            coalOption.value = "BituminousCoal,Lignite";
+            this.filterList.insertBefore(coalOption, this.filterList.children[this.rowHeaders.indexOf("BituminousCoal")]);
+
+
             let ironOption = document.createElement("option");
-            ironOption.textContent = "≪Iron≫";
-            ironOption.value = "Magnetite,Limonite,Hematite";
+            ironOption.textContent = "≪Iron & Steel≫";
+            ironOption.value = "Magnetite,Limonite,Hematite,Garnierite";
             this.filterList.insertBefore(ironOption, this.filterList.children[this.rowHeaders.indexOf("Magnetite")]);
+
+            let bronzeMaterialOption = document.createElement("option");
+            bronzeMaterialOption.textContent = "≪Bronze Mat.≫"
+            bronzeMaterialOption.value = "Cassiterite,Sphalerite,Bismuthinite"
+            this.filterList.insertBefore(bronzeMaterialOption, this.filterList.children[this.rowHeaders.indexOf("Cassiterite")]);
 
             let copperOption = document.createElement("option");
             copperOption.textContent = "≪Copper≫";
             copperOption.value = "NativeCopper,Malachite,Tetraheadrite";
             this.filterList.insertBefore(copperOption, this.filterList.children[this.rowHeaders.indexOf("NativeCopper")]);
+
+            let fireClayOption = document.createElement("option");
+            fireClayOption.textContent = "≪Fire Clay≫";
+            fireClayOption.value = "Kaolinite,Graphite";
+            this.filterList.insertBefore(fireClayOption, this.filterList.children[this.rowHeaders.indexOf("Kaolinite")]);
+
+            let fluxOption = document.createElement("option");
+            fluxOption.textContent = "≪Flux≫";
+            fluxOption.value = "Flux,Borax";
+            this.filterList.insertBefore(fluxOption, this.filterList.children[this.rowHeaders.indexOf("Flux")]);
 
             this.filterList.addEventListener("change", (e) => {
                 if (e.target.value == "Category" || e.target.value == "RockName"){
