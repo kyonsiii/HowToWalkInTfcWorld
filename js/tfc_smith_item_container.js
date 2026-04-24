@@ -8,6 +8,7 @@ class SmithItemContainer{
             "【ハンマー】Shrink→Punch$",
             "【ナイフ】Draw→Draw→[^→]*Hit$",
             "【探鉱槌】Draw→Bend→Punch$",
+            "【ミネラル探鉱槌】Draw→[^→]*Hit$",
             "【ノコギリ】[^→]*Hit→[^→]*Hit$",
             "【ノミ】Draw→[^→]*Hit→[^→]*Hit$",
             "【鎌】Bend→Draw→[^→]*Hit$",
